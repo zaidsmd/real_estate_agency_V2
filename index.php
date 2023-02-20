@@ -3,9 +3,9 @@ include "php/head.php";
 include "php/navbar.php";
 include_once "php/dbconfig.php";
 session_start();
-setcookie('user[id]', 1, strtotime("+1 month "));
-setcookie('user[email]', 'admin', strtotime("+1 month "));
-setcookie('user[pwd]', 'admin', strtotime("+1 month "));
+//setcookie('user[id]', 1, strtotime("+1 month "));
+//setcookie('user[email]', 'admin', strtotime("+1 month "));
+//setcookie('user[pwd]', 'admin', strtotime("+1 month "));
 ?>
 <main>
     <aside>

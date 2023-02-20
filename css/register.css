@@ -47,7 +47,7 @@ main {
 .right {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
   padding: 4rem 1rem;
   width: 100%;
@@ -75,16 +75,19 @@ form {
   gap: 1rem;
 }
 
-.relative {
+.input, .relative {
   width: 100% !important;
 }
 
 input[type=submit] {
   background-color: #6271DD !important;
   color: white;
+  border-radius: 0.3rem !important;
+  padding: 0.5rem !important;
+  width: 100%;
 }
 
-input {
+input:not([type=submit]) {
   background-color: #F6F6F6 !important;
   border-radius: 0.3rem !important;
   padding: 1rem !important;
@@ -92,17 +95,34 @@ input {
   border: none;
   width: 100%;
 }
-input:focus {
+input:not([type=submit]):focus {
   background-color: white !important;
   border: 1px solid #6271DD;
 }
-input:focus ~ label {
+input:not([type=submit]):focus ~ label {
   color: #6271DD !important;
   background-color: white;
 }
 
 label {
   color: #8A8B92;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #E74040;
+  display: none;
+}
+
+.show {
+  display: block !important;
+}
+
+a {
+  color: #6271DD;
+}
+a:hover {
+  color: #3b4edf;
 }
 
 /*# sourceMappingURL=register.css.map */

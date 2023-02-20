@@ -43,7 +43,7 @@ main {
 .right {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
   padding: 4rem 1rem;
   width: 100%;
@@ -67,14 +67,17 @@ form {
   align-items: center;
   gap: 1rem;
 }
-.relative {
+.input ,.relative {
   width: 100% !important;
 }
 input[type='submit'] {
   background-color: $primaryPurple !important;
   color: white;
+  border-radius: .3rem !important;
+  padding: .5rem !important;
+  width: 100%;
 }
-input  {
+input:not([type='submit']){
   background-color: $lightGray !important;
   border-radius: .3rem !important;
   padding: 1rem !important;
@@ -89,8 +92,21 @@ input  {
       background-color: white;
     }
   }
-
 }
 label {
     color: $darkGray;
+}
+.error {
+  font-size: .8rem;
+  color: $red;
+  display: none;
+}
+.show {
+  display: block !important;
+}
+a {
+  color: $primaryPurple;
+  &:hover {
+    color: #3b4edf;
+  }
 }
