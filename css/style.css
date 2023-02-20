@@ -93,7 +93,7 @@ main {
   flex-direction: row;
 }
 main aside {
-  width: 200px;
+  width: 250px;
   background-color: white;
   padding: 1.5rem 1rem;
 }

@@ -1,0 +1,96 @@
+@import "variables";
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+#logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $primaryPurple;
+  font-size: 2rem;
+  gap: .5rem;
+  span {
+    font-family: 'Kodchasan', sans-serif;
+    font-weight: 700;
+    color: $primaryPurple;
+    white-space: nowrap;
+    font-size: 1.5rem;
+  }
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $primaryPurple;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: .5rem;
+  width: 90%;
+  max-width: 900px;
+  overflow: clip;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem 1rem;
+  width: 100%;
+  height: calc(100% - 1rem);
+}
+.left {
+  width: 100%;
+}
+.input-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+  *{
+    width: 100%;
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.relative {
+  width: 100% !important;
+}
+input[type='submit'] {
+  background-color: $primaryPurple !important;
+  color: white;
+}
+input  {
+  background-color: $lightGray !important;
+  border-radius: .3rem !important;
+  padding: 1rem !important;
+  height: 3rem !important;
+  border: none;
+  width: 100%;
+  &:focus{
+    background-color: white !important;
+    border: 1px solid $primaryPurple;
+    &~label {
+      color: $primaryPurple !important;
+      background-color: white;
+    }
+  }
+
+}
+label {
+    color: $darkGray;
+}

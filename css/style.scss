@@ -1,14 +1,4 @@
-// fonts
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
-// colors
-$lightBlue : #F7FAFF;
-$primaryPurple : #6271DD;
-$darkGray : #8A8B92 ;
-$lightGray :#F6F6F6;
-$green : #009136;
-$red : #E74040;
-$shadow:  0 4px 10px rgba(0, 0, 0, 0.1) ;
+@import "variables";
 ///////////////////////
 *{
   padding: 0;
@@ -102,7 +92,7 @@ main {
   display: flex;
   flex-direction: row;
   aside {
-    width: 200px;
+    width: 250px;
     background-color: white;
     padding: 1.5rem 1rem;
     *{
@@ -162,3 +152,4 @@ input, select {
   gap: .5rem;
   align-items: center;
 }
+//////////////register//////////////////

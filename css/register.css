@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+#logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #6271DD;
+  font-size: 2rem;
+  gap: 0.5rem;
+}
+#logo span {
+  font-family: "Kodchasan", sans-serif;
+  font-weight: 700;
+  color: #6271DD;
+  white-space: nowrap;
+  font-size: 1.5rem;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #6271DD;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 90%;
+  max-width: 900px;
+  overflow: clip;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem 1rem;
+  width: 100%;
+  height: calc(100% - 1rem);
+}
+
+.left {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1rem;
+}
+.input-group * {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.relative {
+  width: 100% !important;
+}
+
+input[type=submit] {
+  background-color: #6271DD !important;
+  color: white;
+}
+
+input {
+  background-color: #F6F6F6 !important;
+  border-radius: 0.3rem !important;
+  padding: 1rem !important;
+  height: 3rem !important;
+  border: none;
+  width: 100%;
+}
+input:focus {
+  background-color: white !important;
+  border: 1px solid #6271DD;
+}
+input:focus ~ label {
+  color: #6271DD !important;
+  background-color: white;
+}
+
+label {
+  color: #8A8B92;
+}
+
+/*# sourceMappingURL=register.css.map */
