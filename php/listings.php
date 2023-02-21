@@ -1,6 +1,6 @@
 <?php
-include_once "php/dbconfig.php";
 session_start();
+include_once "dbconfig.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -9,8 +9,7 @@ session_start();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/icons.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>House Miner</title>
 </head>
 <body>
@@ -30,10 +29,10 @@ session_start();
             <div class="navbar">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="index.php" class=" active nav-link">Home</a>
+                        <a href="index.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="php/listings.php" class="nav-link">Listings</a>
+                        <a href="php/listings.php" class="active nav-link">Listings</a>
                     </li>
                 </ul>
                 <button class="add-announcement"></button>
@@ -53,7 +52,7 @@ session_start();
 </nav>
 <main>
     <aside>
-        <form action="">
+        <form action="listings.php" method="get">
             <div class="input-group">
                 <h6>Ville</h6>
                 <label for="city"  class="hide" ></label>

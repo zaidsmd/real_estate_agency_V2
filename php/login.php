@@ -1,6 +1,12 @@
 <?php
 include "dbconfig.php";
-
+session_start();
+if (isset($_SESSION["sign"])){
+    if ($_SESSION["sign"]){
+        header('Location: ../');
+        exit();
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,7 +17,7 @@ include "dbconfig.php";
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/register.css">
-    <title>Créer votre compte House Miner</title>
+    <title>Se connecter</title>
 </head>
 <body>
 <main>
@@ -21,6 +27,25 @@ include "dbconfig.php";
             <span>House Miner</span>
         </div>
         <form action="login.php" method="get">
+            <?php
+            if (isset($_GET['email'])){
+                $email = $_GET['email'];
+                $pwd = md5($_GET['pwd']);
+                $statement = $conn->prepare("SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$pwd'");
+                $statement->execute();
+                $result= $statement->fetchAll();
+                if (count($result)==1){
+                    $_SESSION['sign'] = true;
+                    $_SESSION['name'] = $result[0]["name"];
+                    $_SESSION['lastname']= $result[0]["last_name"];
+                    $_SESSION['id']= $result[0]["id"];
+                    header("Location: ../");
+                    exit();
+                }else {
+                    echo "<p class='response'>Le mot de pass ou email est incorrect</p>";
+                }
+            }
+            ?>
             <div class="input">
                 <div class="relative">
                     <input type="email" id="email"

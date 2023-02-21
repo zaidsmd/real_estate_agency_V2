@@ -91,6 +91,7 @@ main {
   background-color: #F7FAFF;
   display: flex;
   flex-direction: row;
+  min-height: calc(100vh - 57px);
 }
 main aside {
   width: 250px;

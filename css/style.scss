@@ -91,6 +91,7 @@ main {
   background-color: $lightBlue;
   display: flex;
   flex-direction: row;
+  min-height: calc(100vh - 57px);
   aside {
     width: 250px;
     background-color: white;

@@ -1,15 +1,10 @@
 <?php
 include "dbconfig.php";
-if (isset($_COOKIE["user"])) {
-    $id = $_COOKIE["user"]["id"];
-    $statement = $conn->prepare("SELECT * FROM users WHERE id = '$id'");
-    $statement->execute();
-    $result = $statement->fetchAll();
-    if (count($result) > 0) {
-        if ($_COOKIE["user"]["email"] == $result[0]["email"] && $_COOKIE["user"]["pwd"] == $result[0]["password"]) {
-            header('Location: ../');
-            exit();
-        }
+session_start();
+if (isset($_SESSION["sign"])) {
+    if ($_SESSION["sign"]){
+        header('Location: ../');
+        exit();
     }
 };
 ?>
