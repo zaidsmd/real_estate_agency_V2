@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/style.css">
     <title>House Miner</title>
 </head>
@@ -23,10 +23,14 @@ session_start();
     if (isset($_SESSION["sign"])) {
         if ($_SESSION["sign"]) {
             $id = $_SESSION["id"];
-            $statement = $conn->prepare("SELECT `profile_pic` FROM `users` WHERE `id` ='$id' ");
+            $statement = $conn->prepare("SELECT * FROM `users` WHERE `id` ='$id' ");
             $statement->execute();
             $result = $statement->fetchAll();
-            $profile_pic = $result[0]["profile_pic"]?>
+            $profile_pic = $result[0]["profile_pic"];
+            $name = $result[0]["name"];
+            $last_name = $result[0]["last_name"];
+            $email = $result[0]["email"];
+            ?>
             <div class="navbar">
                 <ul class="nav-list">
                     <li class="nav-item">
@@ -36,13 +40,28 @@ session_start();
                         <a href="php/listings.php" class="nav-link">Listings</a>
                     </li>
                 </ul>
-                <button class="add-announcement"></button>
+                <button class="add-announcement">Ajouter une announce</button>
             </div>
-            <a href="php/profile.php">
-                <div class="profile">
-                    <img src='<?= $profile_pic?>' alt="">
+            <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
+                    class="flex mx-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 profile">
+                <img src='<?= $profile_pic ?>' alt="">
+            </button>
+            <div id="dropdownAvatar"
+                 class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                    <p class="text-center" ><?= $name.' '.$last_name ?></p>
+                    <div class="font-medium truncate"><?=$email?></div>
                 </div>
-            </a>
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+                    <li>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
+                    </li>
+                </ul>
+                <div class="py-2">
+                    <a href=""
+                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Se déconnecter</a>
+                </div>
+            </div>
         <?php } else {
             echo "<a id='login-home' href='php/login.php'>Se connecter</a>";
         }
@@ -112,5 +131,6 @@ session_start();
     </section>
 </main>
 <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 </body>
 </html>

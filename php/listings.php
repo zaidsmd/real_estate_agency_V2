@@ -1,5 +1,14 @@
 <?php
 session_start();
+if (isset($_SESSION["sign"])) {
+    if (!$_SESSION["sign"]) {
+        header('Location: ../');
+        exit();
+    }
+} else {
+    header('Location: ../');
+    exit();
+}
 include_once "dbconfig.php";
 ?>
 <!doctype html>
@@ -9,6 +18,7 @@ include_once "dbconfig.php";
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/style.css">
     <title>House Miner</title>
 </head>
@@ -19,43 +29,53 @@ include_once "dbconfig.php";
         <span>House Miner</span>
     </div>
     <?php
-    if (isset($_SESSION["sign"])) {
-        if ($_SESSION["sign"]) {
-            $id = $_SESSION["id"];
-            $statement = $conn->prepare("SELECT `profile_pic` FROM `users` WHERE `id` ='$id' ");
-            $statement->execute();
-            $result = $statement->fetchAll();
-            $profile_pic = $result[0]["profile_pic"]?>
-            <div class="navbar">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="index.php" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="php/listings.php" class="active nav-link">Listings</a>
-                    </li>
-                </ul>
-                <button class="add-announcement"></button>
-            </div>
-            <a href="php/profile.php">
-                <div class="profile">
-                    <img src='<?= $profile_pic?>' alt="">
-                </div>
-            </a>
-        <?php } else {
-            echo "<a id='login-home' href='php/login.php'>Se connecter</a>";
-        }
-    } else {
-        echo "<a id='login-home' href='php/login.php'>Se connecter</a>";
-    }
+    $id = $_SESSION["id"];
+    $statement = $conn->prepare("SELECT * FROM `users` WHERE `id` ='$id' ");
+    $statement->execute();
+    $result = $statement->fetchAll();
+    $profile_pic = $result[0]["profile_pic"];
+    $name = $result[0]["name"];
+    $last_name = $result[0]["last_name"];
+    $email = $result[0]["email"];
     ?>
+    <div class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="../index.php" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="php/listings.php" class="active nav-link">Listings</a>
+            </li>
+        </ul>
+        <button class="add-announcement">Ajouter une announce</button>
+    </div>
+    <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
+            class="flex mx-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 profile">
+        <img src='<?= $profile_pic ?>' alt="">
+    </button>
+    <div id="dropdownAvatar"
+         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+            <p class="text-center" ><?= $name.' '.$last_name ?></p>
+            <div class="font-medium truncate"><?=$email?></div>
+        </div>
+        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+            <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
+            </li>
+        </ul>
+        <div class="py-2">
+            <a href=""
+               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Se déconnecter</a>
+        </div>
+    </div>
 </nav>
 <main>
     <aside>
         <form action="listings.php" method="get">
             <div class="input-group">
                 <h6>Ville</h6>
-                <label for="city"  class="hide" ></label>
+                <label for="city" class="hide"></label>
                 <select name="city" id="city">
                     <option value="0">Ville</option>
                 </select>
@@ -74,7 +94,7 @@ include_once "dbconfig.php";
             <div class="input-group">
                 <h6>Prix</h6>
                 <div class="row">
-                    <label for="min" class="hide" ></label>
+                    <label for="min" class="hide"></label>
                     <input type="number" name="min" id="min" placeholder="min">
                     <span>à</span>
                     <label for="max" class="hide"></label>
@@ -108,8 +128,10 @@ include_once "dbconfig.php";
         </form>
     </aside>
     <section>
+
     </section>
 </main>
 <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 </body>
 </html>

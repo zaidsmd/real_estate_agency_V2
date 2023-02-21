@@ -37,9 +37,11 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     border-left: 2px solid $darkGray ;
     border-right: 2px solid $darkGray ;
     width: 100%;
+    padding: 0 1rem;
     .nav-list {
       display: flex;
       flex-direction: row;
@@ -58,6 +60,20 @@ nav {
             color: $primaryPurple;
           }
         }
+      }
+    }
+    .add-announcement {
+      padding: .4rem .7rem;
+      color: white;
+      background-color: $green;
+      border: none;
+      outline: none;
+      border-radius: .3rem;
+      cursor: pointer;
+      transition: all ease 300ms;
+      &:hover {
+        background-color: #005f25;
+        box-shadow: $shadow;
       }
     }
   }
@@ -120,7 +136,7 @@ main {
            width: 100%;
          }
          input {
-           width: .8rem;
+           width: 1rem;
          }
        }
      }
@@ -135,7 +151,20 @@ main {
    }
   }
 }
-input, select {
+input[type="checkbox"]{
+  &:focus {
+    all: revert;
+    accent-color: $primaryPurple;
+  }
+  all: revert;
+  background-color: $lightGray;
+  border-radius: .3rem;
+  padding: .3rem .5rem;
+  border: none;
+  outline: none;
+  accent-color: $primaryPurple;
+}
+input, select{
   background-color: $lightGray;
   border-radius: .3rem;
   padding: .3rem .5rem;
@@ -143,6 +172,12 @@ input, select {
   outline: none;
   width: 100%;
   accent-color: $primaryPurple;
+  &:focus, &:focus-within {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
 }
 .hide {
   display: none;

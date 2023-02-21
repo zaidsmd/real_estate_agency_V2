@@ -39,9 +39,11 @@ nav .navbar {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   border-left: 2px solid #8A8B92;
   border-right: 2px solid #8A8B92;
   width: 100%;
+  padding: 0 1rem;
 }
 nav .navbar .nav-list {
   display: flex;
@@ -60,6 +62,20 @@ nav .navbar .nav-list .nav-item .nav-link:hover {
 }
 nav .navbar .nav-list .nav-item .nav-link.active {
   color: #6271DD;
+}
+nav .navbar .add-announcement {
+  padding: 0.4rem 0.7rem;
+  color: white;
+  background-color: #009136;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all ease 300ms;
+}
+nav .navbar .add-announcement:hover {
+  background-color: #005f25;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 nav .profile {
   width: 40px;
@@ -125,7 +141,7 @@ main aside form .input-group .checkbox label {
   width: 100%;
 }
 main aside form .input-group .checkbox input {
-  width: 0.8rem;
+  width: 1rem;
 }
 main aside form input[type=submit] {
   background-color: #6271DD !important;
@@ -136,6 +152,20 @@ main aside form h6 {
   font-size: 1rem;
 }
 
+input[type=checkbox] {
+  all: revert;
+  background-color: #F6F6F6;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  outline: none;
+  accent-color: #6271DD;
+}
+input[type=checkbox]:focus {
+  all: revert;
+  accent-color: #6271DD;
+}
+
 input, select {
   background-color: #F6F6F6;
   border-radius: 0.3rem;
@@ -144,6 +174,11 @@ input, select {
   outline: none;
   width: 100%;
   accent-color: #6271DD;
+}
+input:focus, input:focus-within, select:focus, select:focus-within {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .hide {
