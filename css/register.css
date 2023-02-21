@@ -49,9 +49,9 @@ main {
   flex-direction: column;
   gap: 4rem;
   align-items: center;
+  justify-content: center;
   padding: 4rem 1rem;
   width: 100%;
-  height: calc(100% - 1rem);
 }
 
 .left {
@@ -73,6 +73,9 @@ form {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  height: 100%;
 }
 
 .input, .relative {
@@ -123,6 +126,16 @@ a {
 }
 a:hover {
   color: #3b4edf;
+}
+
+.response {
+  color: #E74040;
+  background-color: rgba(231, 64, 64, 0.1);
+  border: 1px solid #E74040;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
 }
 
 /*# sourceMappingURL=register.css.map */

@@ -12,17 +12,6 @@ if (isset($_COOKIE["user"])) {
         }
     }
 };
-if (isset($_GET["name"])) {
-    $name = $_GET["name"];
-    $last_name = $_GET["last_name"];
-    $email = $_GET["email"];
-    $pwd = password_hash($_GET["pwd"],PASSWORD_DEFAULT);
-    $phone_number = $_GET["tel"];
-    $statement = $conn->prepare("INSERT INTO `users` (`name`,`last_name`,`email`,`password`,`phone_number`) VALUES ('$name','$last_name','$email','$pwd','$phone_number')");
-    $statement->execute();
-    header('Location: login.php');
-    exit();
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,6 +32,26 @@ if (isset($_GET["name"])) {
             <span>House Miner</span>
         </div>
         <form action="register.php" method="get">
+            <?php
+            if (isset($_GET["name"])) {
+                $name = $_GET["name"];
+                $last_name = $_GET["last_name"];
+                $email = $_GET["email"];
+                $pwd = md5($_GET["pwd"]);
+                $phone_number = $_GET["tel"];
+                $statement = $conn->prepare("SELECT `id` FROM `users` WHERE `email` = '$email'");
+                $statement ->execute();
+                $result = $statement->fetchAll();
+                if (count($result)==0) {
+                    $statement = $conn->prepare("INSERT INTO `users` (`name`,`last_name`,`email`,`password`,`phone_number`) VALUES ('$name','$last_name','$email','$pwd','$phone_number')");
+                    $statement->execute();
+                    header('Location: login.php');
+                    exit();
+                }else {
+                    echo "<p class='response'>Cette adresse e-mail est déjà prise</p>";
+                }
+            }
+            ?>
             <div class="input-group">
                 <div class="input">
                     <div class="relative">
