@@ -48,7 +48,7 @@ session_start();
             </div>
             <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
                     class="flex mx-3 text-sm rounded-full md:mr-0 focus:ring-4 profile">
-                <img src='<?= $profile_pic ?>' alt="">
+                <img src='files/profiles/<?= $profile_pic ?>' alt="">
                 <span><?= $name . ' ' . $last_name ?> </span>
             </button>
             <div id="dropdownAvatar"
@@ -58,10 +58,13 @@ session_start();
                     <div class="font-medium truncate"><?= $email ?></div>
                 </div>
                 <a href="php/profil.php"
-                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
+                   class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
                 <div class="py-2">
-                    <a href=""
-                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Se déconnecter</a>
+                    <a href="php/logout.php"
+                       class=" logout px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        <span>Se déconnecter </span>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
                 </div>
             </div>
         <?php } else {

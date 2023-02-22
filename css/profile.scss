@@ -1,8 +1,7 @@
 @import "variables";
+@import "navbar";
 
 body {
-  display: flex;
-  flex-direction: row;
   width: 100%;
 }
 .left {
@@ -11,7 +10,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
+  min-height: 93vh;
   padding: 1rem .5rem;
   background-color: $lightBlue;
   div  {
@@ -28,8 +27,8 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 80%;
-      border: 1px solid $primaryPurple;
+      width: 60%;
+      border: 5px solid white;
       img {
         width: 120%;
         max-width: none;
@@ -47,14 +46,75 @@ body {
 }
 main {
   width: 100%;
+  display: flex;
+  flex-direction: row;
   .input-group{
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.15);
+    border-radius: .3rem;
+    input {
+      background-color: $lightGray !important;
+      border: 1px solid $primaryPurple;
+      border-radius: .3rem 0 0 .3rem !important;
+    }
     button {
       background-color: $lightGray;
       border: none;
+      &:hover {
+        background-color: $primaryPurple;
+      }
+      &:active , &:focus {
+        box-shadow: none !important;
+      }
+      &.clicked {
+        border-bottom: 1px solid $primaryPurple;
+        border-top: 1px solid $primaryPurple;
+        border-right: 1px solid $primaryPurple;
+        background-color: $primaryPurple;
+        color: white;
+      }
     }
+  }
+  form {
+    width: 100%;
+    padding: 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  div:not(:last-child) {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
   }
 }
 input[disabled] {
   background-color: $lightGray !important;
+  border: none !important;
+}
+h3 {
+  color: $primaryPurple !important;
+}
+.btn-outline-danger {
+  color: $red;
+  border-color: $red;
+  &:hover {
+    background-color: $red;
+    color: white;
+  }
+}
+input:not([type=submit]) {
+  background-color: #F6F6F6 !important;
+  border-radius: 0.3rem !important;
+  padding: 1rem !important;
+  height: 3rem !important;
   border: none;
+  width: 100%;
+}
+input:not([type=submit]):focus {
+  background-color: white !important;
+  border: 1px solid #6271DD !important;
+}
+input:not([type=submit]):focus ~ label {
+  color: #6271DD !important;
+  background-color: white;
 }

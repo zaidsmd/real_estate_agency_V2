@@ -19,7 +19,10 @@ $shadow:  0 4px 10px rgba(0, 0, 0, 0.1) ;
     background-color: #3b4de3;
   }
   &:active {
-    all:revert;
+    background-color: $primaryPurple;
+    color: white;
+    border: none;
+    outline: none;
   }
 }
 input, select{
@@ -31,8 +34,14 @@ input, select{
   width: 100%;
   accent-color: $primaryPurple;
   &:focus, &:focus-within {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
+    border: none ;
+    outline: none ;
+    box-shadow: none ;
   }
+}
+a,button {
+  cursor: pointer !important;
+}
+.nav-link {
+  padding: 0;
 }

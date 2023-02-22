@@ -1,0 +1,115 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-bottom: 1px solid rgba(98, 113, 221, 0.29);
+  width: 100%;
+  gap: 1rem;
+  padding: .5rem 1.5rem;
+  #logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: $primaryPurple;
+    font-size: 2rem;
+    gap: .5rem;
+    span {
+      font-family: 'Kodchasan', sans-serif;
+      font-weight: 700;
+      color: $primaryPurple;
+      white-space: nowrap;
+      font-size: 1.5rem;
+    }
+  }
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 2px solid $darkGray ;
+    border-right: 2px solid $darkGray ;
+    width: 100%;
+    padding: 0 1rem;
+    .nav-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: .5rem;
+      padding: 0 .5rem;
+      margin: 0;
+      .nav-item {
+        .nav-link {
+          color: $darkGray;
+          &:hover {
+            color: #5365dc;
+            text-shadow: $shadow;
+            transition: all 300ms ease-in-out;
+          }
+          &.active {
+            color: $primaryPurple;
+          }
+        }
+      }
+    }
+    .add-announcement {
+      padding: .4rem .7rem;
+      color: white;
+      background-color: $green;
+      border: none;
+      outline: none;
+      border-radius: .3rem;
+      cursor: pointer;
+      transition: all ease 300ms;
+      &:hover {
+        background-color: #005f25;
+        box-shadow: $shadow;
+      }
+    }
+  }
+  .profile {
+    height: 40px;
+    width: max-content;
+    border-radius: .5rem;
+    overflow: clip;
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid $lightGray ;
+    padding: 0 1.5rem 0 1rem;
+    &:focus {
+      box-shadow: 0 0 0 4px rgba(98, 113, 221, 0.60);
+    }
+    img {
+      width: 50px;
+    }
+    span {
+      display: -webkit-box;
+      white-space: nowrap;
+    }
+  }
+  #login-home {
+    background-color: $primaryPurple;
+    border-radius: .3rem;
+    padding: .5rem 1rem;
+    color: white;
+    transition: all ease-in-out 300ms;
+    &:hover {
+      box-shadow: $shadow;
+      background-color:#5365dc;
+      padding: .5rem 1.2rem ;
+    }
+  }
+  a {
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &.logout {
+      color: $red;
+    }
+  }
+}
