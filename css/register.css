@@ -13,6 +13,21 @@
   all: revert;
 }
 
+input, select {
+  background-color: #F6F6F6;
+  border-radius: 0.3rem !important;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  accent-color: #6271DD;
+}
+input:focus, input:focus-within, select:focus, select:focus-within {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 * {
   padding: 0;
   margin: 0;

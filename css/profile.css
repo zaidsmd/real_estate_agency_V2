@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap");
+.btn-primary {
+  background-color: #6271DD;
+  color: white;
+  border: none;
+  outline: none;
+}
+.btn-primary:hover {
+  background-color: #3b4de3;
+}
+.btn-primary:active {
+  all: revert;
+}
+
+input, select {
+  background-color: #F6F6F6;
+  border-radius: 0.3rem !important;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  accent-color: #6271DD;
+}
+input:focus, input:focus-within, select:focus, select:focus-within {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.left {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+  background-color: #F7FAFF;
+}
+.left div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+.left div .img {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  border: 1px solid #6271DD;
+}
+.left div .img img {
+  width: 120%;
+  max-width: none;
+}
+.left div h6 {
+  font-size: 1.5rem;
+  color: #6271DD;
+}
+.left div a {
+  width: 100%;
+  background-color: #E74040;
+}
+
+main {
+  width: 100%;
+}
+main .input-group button {
+  background-color: #F6F6F6;
+  border: none;
+}
+
+input[disabled] {
+  background-color: #F6F6F6 !important;
+  border: none;
+}
+
+/*# sourceMappingURL=profile.css.map */

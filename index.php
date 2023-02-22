@@ -57,7 +57,7 @@ session_start();
                     <p class="text-center"><?= $name . ' ' . $last_name ?></p>
                     <div class="font-medium truncate"><?= $email ?></div>
                 </div>
-                <a href="#"
+                <a href="php/profil.php"
                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
                 <div class="py-2">
                     <a href=""

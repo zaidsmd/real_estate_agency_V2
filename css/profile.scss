@@ -1,0 +1,60 @@
+@import "variables";
+
+body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.left {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem .5rem;
+  background-color: $lightBlue;
+  div  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    .img {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      border: 1px solid $primaryPurple;
+      img {
+        width: 120%;
+        max-width: none;
+      }
+    }
+    h6 {
+      font-size: 1.5rem;
+      color: $primaryPurple;
+    }
+    a {
+      width: 100% ;
+      background-color: $red;
+    }
+  }
+}
+main {
+  width: 100%;
+  .input-group{
+    button {
+      background-color: $lightGray;
+      border: none;
+    }
+  }
+}
+input[disabled] {
+  background-color: $lightGray !important;
+  border: none;
+}

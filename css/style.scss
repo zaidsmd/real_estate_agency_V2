@@ -186,20 +186,6 @@ input[type="checkbox"]{
   outline: none;
   accent-color: $primaryPurple;
 }
-input, select{
-  background-color: $lightGray;
-  border-radius: .3rem !important;
-  padding: .3rem .5rem;
-  border: none;
-  outline: none;
-  width: 100%;
-  accent-color: $primaryPurple;
-  &:focus, &:focus-within {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-}
 input[type="number"] {
   background-color: $lightGray;
   border-radius: .3rem;
@@ -258,4 +244,7 @@ input[type="number"] {
     color: $darkGray !important;
     font-size: 1rem;
   }
+}
+a {
+  text-decoration:none !important;
 }

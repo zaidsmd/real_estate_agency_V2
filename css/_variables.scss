@@ -22,3 +22,17 @@ $shadow:  0 4px 10px rgba(0, 0, 0, 0.1) ;
     all:revert;
   }
 }
+input, select{
+  background-color: $lightGray;
+  border-radius: .3rem !important;
+  padding: .3rem .5rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  accent-color: $primaryPurple;
+  &:focus, &:focus-within {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
