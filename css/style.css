@@ -234,6 +234,11 @@ input[type=number] {
   flex-direction: column;
   gap: 1rem;
 }
+#add_announcement .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 #add_announcement .error {
   font-size: 0.8rem;
   color: #E74040;
@@ -242,6 +247,7 @@ input[type=number] {
 #add_announcement select {
   padding: 0.5rem;
   color: #8A8B92;
+  height: 48px;
 }
 #add_announcement input:not([type=submit], [type=file]) {
   background-color: #F6F6F6 !important;
@@ -259,6 +265,10 @@ input[type=number] {
 #add_announcement input:not([type=submit], [type=file]):focus ~ label {
   color: #6271DD !important;
   background-color: white;
+}
+#add_announcement textarea:hover, #add_announcement textarea:focus {
+  border-color: #8A8B92 !important;
+  box-shadow: none !important;
 }
 #add_announcement label {
   color: #8A8B92 !important;

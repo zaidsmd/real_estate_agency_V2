@@ -61,8 +61,7 @@ session_start();
                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
                 <div class="py-2">
                     <a href=""
-                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Se
-                        déconnecter</a>
+                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Se déconnecter</a>
                 </div>
             </div>
         <?php } else {
@@ -141,8 +140,8 @@ session_start();
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter une annonce</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form action="php/add.php" method="get" enctype="multipart/form-data">
+                <form action="php/add.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
                         <div class="input">
                             <div class="relative">
                                 <input type="text" id="title"
@@ -158,6 +157,9 @@ session_start();
                             <label for="city_modal" class="hide"></label>
                             <select name="city" id="city_modal">
                                 <option value="0">Ville</option>
+                                <option value="tanger">Tanger</option>
+                                <option value="casablanca">Casablanca</option>
+                                <option value="rabat">Rabat</option>
                             </select>
                         </div>
                         <div class="input">
@@ -175,32 +177,59 @@ session_start();
                             <label for="category_select" class="hide"></label>
                             <select name="category" id="category_select">
                                 <option value="0">Category</option>
+                                <option value="Vente">vente</option>
+                                <option value="location">Location</option>
                             </select>
                         </div>
                         <div class="input-group">
                             <label for="type_modal" class="hide"></label>
                             <select name="type" id="type_modal">
                                 <option value="0">Type</option>
+                                <option value="appartement">Appartement</option>
+                                <option value="maison">Maison</option>
+                                <option value="villa">Villa</option>
+                                <option value="bureau">Bureau</option>
+                                <option value="terrain">Terrain</option>
                             </select>
                         </div>
                         <div class="input">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                    for="file_input">Image principale</label>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                   name="primary"
                                    id="file_input" type="file">
                         </div>
                         <div class="input">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                   for="file_input">Images</label>
+                                   for="pictures">Images</label>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                   id="file_input" type="file" multiple>
+                                   name="pictures[]"
+                                   id="pictures" type="file" multiple>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="button" class="btn btn-primary">Ajouter</button>
-                </div>
+                        <div class="input">
+                            <div class="relative">
+                                <input type="text" id="price_modal"
+                                       name="price"
+                                       class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                       placeholder=""/>
+                                <label for="price_modal"
+                                       class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Price</label>
+                            </div>
+                            <p class="error">le nom ne peut pas contenir de chiffres ni de caractères spéciaux</p>
+                        </div>
+                        <div class="input">
+                            <label for="description"
+                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                            <textarea id="description" rows="4"
+                                      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                      name="description" placeholder="Write your description here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
