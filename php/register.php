@@ -117,7 +117,7 @@ if (isset($_SESSION["sign"])) {
                     <p class="error">les mots de pass ne correspondent pas</p>
                 </div>
             </div>
-            <input type="submit" value="S'inscrire">
+            <input type="submit"  value="S'inscrire">
             <a href="login.php">Vous avez déjà un compte?</a>
         </form>
     </div>
