@@ -33,6 +33,12 @@ input:focus, input:focus-within, select:focus, select:focus-within {
 
 a, button {
   cursor: pointer !important;
+  transition: all ease 300ms;
+  padding: 0.5rem 1rem !important;
+}
+a:hover, button:hover {
+  background-color: #485bc8 !important;
+  padding: 0.5rem 1.2rem !important;
 }
 
 .nav-link {
@@ -218,6 +224,9 @@ main aside form h6 {
   color: #6271DD;
   font-size: 1rem;
 }
+main section {
+  width: 100%;
+}
 
 .row {
   display: flex;
@@ -285,7 +294,7 @@ input[type=number] {
   height: 3rem !important;
   border: none;
   width: 100%;
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
 }
 #add_announcement input:not([type=submit], [type=file]):focus {
   background-color: white !important;
@@ -306,6 +315,111 @@ input[type=number] {
 
 a {
   text-decoration: none !important;
+}
+
+.modal-dialog {
+  max-width: 900px;
+  width: 90%;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.8rem;
+  transition: all ease-in-out 300ms;
+  background-color: white;
+}
+.card .card-img {
+  max-height: 200px !important;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card .card-img img {
+  width: 100%;
+}
+.card * {
+  margin: 0;
+}
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.tags * {
+  padding: 0.2rem 0.4rem;
+  background-color: #8A8B92;
+  color: white;
+  border-radius: 0.3rem;
+  font-size: 0.7rem;
+}
+
+.adresse {
+  color: #8A8B92;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price {
+  color: #6271DD;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.cards {
+  padding: 1.5rem 0;
+  row-gap: 1rem;
+}
+.cards .card-container {
+  padding: 0 0.5rem;
+}
+@media screen and (max-width: 1200px) {
+  .cards .card-container {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .cards .card-container {
+    width: 30%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .cards .card-container {
+    width: 25%;
+  }
+}
+.cards .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.8rem 0 0 0;
+}
+
+.city i {
+  color: #6271DD;
+  font-size: 1.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */

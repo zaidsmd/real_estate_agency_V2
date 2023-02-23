@@ -41,6 +41,12 @@ input, select{
 }
 a,button {
   cursor: pointer !important;
+  transition: all ease 300ms;
+  padding: 0.5rem 1rem !important;
+  &:hover {
+    background-color: #485bc8 !important;
+    padding: 0.5rem 1.2rem !important;
+  }
 }
 .nav-link {
   padding: 0;

@@ -33,6 +33,12 @@ input:focus, input:focus-within, select:focus, select:focus-within {
 
 a, button {
   cursor: pointer !important;
+  transition: all ease 300ms;
+  padding: 0.5rem 1rem !important;
+}
+a:hover, button:hover {
+  background-color: #485bc8 !important;
+  padding: 0.5rem 1.2rem !important;
 }
 
 .nav-link {

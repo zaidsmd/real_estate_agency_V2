@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,28 +19,28 @@
 <main>
     <aside>
         <form action="">
-           <div class="input-group">
-               <h6>Ville</h6>
-               <label for="city"  class="hide" ></label>
-               <select name="city" id="city">
-                   <option value="0">Ville</option>
-               </select>
-           </div>
-           <div class="input-group">
-               <h6>Catégories</h6>
-               <div class="checkbox">
-                   <label for="sale">Vente</label>
-                   <input type="checkbox" name="sale" id="sale">
-               </div>
-               <div class="checkbox">
-                   <label for="rent">Location</label>
-                   <input type="checkbox" name="rent" id="rent">
-               </div>
-           </div>
+            <div class="input-group">
+                <h6>Ville</h6>
+                <label for="city" class="hide"></label>
+                <select name="city" id="city">
+                    <option value="0">Ville</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <h6>Catégories</h6>
+                <div class="checkbox">
+                    <label for="sale">Vente</label>
+                    <input type="checkbox" name="sale" id="sale">
+                </div>
+                <div class="checkbox">
+                    <label for="rent">Location</label>
+                    <input type="checkbox" name="rent" id="rent">
+                </div>
+            </div>
             <div class="input-group">
                 <h6>Prix</h6>
                 <div class="row">
-                    <label for="min" class="hide" ></label>
+                    <label for="min" class="hide"></label>
                     <input type="number" name="min" id="min" placeholder="min">
                     <span>à</span>
                     <label for="max" class="hide"></label>
@@ -72,8 +74,39 @@
         </form>
     </aside>
     <section>
+        <div class="cards d-flex flex-wrap justify-content-lg-around justify-content-md-around">
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="files/6/placeholder-4.png"
+                             class="card-img-top" alt="">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">825m² dream home in Colorado</h4>
+                        <div class="tags">
+                            <div class="tag">For Sale</div>
+                            <div class="tag">825m²</div>
+                            <div class="tag">2023-02-05</div>
+                        </div>
+                        <div class="adresse">615 Sand Creek Dr, Colorado Springs, CO 80916</div>
+                        <div class="price-date d-flex flex-row align-items-center justify-between">
+                            <p class="price">$445,350.00</p> <span>20/23/2020</span>
+                        </div>
+                        <div class="footer d-flex flex-row justify-between align-items-center">
+                            <div class="city">
+                                <i class="fa-sharp fa-solid fa-location-dot"></i><span></span>
+                            </div>
+                            <a href="php/details.php" class="btn btn-primary">Voir Plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 </html>
