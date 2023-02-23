@@ -80,7 +80,7 @@ if (isset($_SESSION["sign"])) {
                     <label for="tel"
                            class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Téléphone</label>
                 </div>
-                <p class="error">veuillez entrer une numéro valide (0/0212/+212)</p>
+                <p class="error">veuillez entrer un numéro valide (0/0212/+212)</p>
             </div>
             <div class="input">
                 <div class="relative">

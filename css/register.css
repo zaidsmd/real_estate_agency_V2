@@ -39,6 +39,14 @@ a, button {
   padding: 0;
 }
 
+p {
+  margin: 0 !important;
+}
+
+.show {
+  display: block !important;
+}
+
 * {
   padding: 0;
   margin: 0;

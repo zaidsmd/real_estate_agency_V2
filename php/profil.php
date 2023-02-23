@@ -9,7 +9,8 @@ if (isset($_SESSION["sign"])) {
 } else {
     header('Location: ../');
     exit();
-} ?>
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,6 +83,15 @@ $phone_number = $result[0]["phone_number"];
         </div>
     </div>
 </nav>
+<?php
+if (isset($_GET["response"])){
+    if ($_GET["response"] == "true"){
+        echo "<p class='response true'>Vos informations ont été mises à jour avec succès</p>";
+    }else{
+        echo "<p class='response false'>Mot de pass incorrect</p>";
+    }
+}
+?>
 <main>
     <div class="left">
         <div>
@@ -92,7 +102,7 @@ $phone_number = $result[0]["phone_number"];
         </div>
         <div>
             <button class="btn btn-outline-danger w-100" type="button" data-bs-toggle="modal"
-                    data-bs-target="#Modezddal">Changer le mot de passe
+                    data-bs-target="#password_change">Changer le mot de passe
             </button>
             <a type="button" href="logout.php" class="btn btn-danger"><i
                         class="fa-solid fa-arrow-right-from-bracket"></i> Se
@@ -113,9 +123,9 @@ $phone_number = $result[0]["phone_number"];
             </div>
         </div>
         <div>
-            <label for="btn">Telephone</label>
+            <label for="tel">Telephone</label>
             <div class="input-group">
-                <input disabled type="text" id="btn" name="phone_number" class="form-control" placeholder="numbre phone"
+                <input disabled type="text" id="tel" name="phone_number" class="form-control" placeholder="numbre phone"
                        value="<?= $phone_number ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary"
                         onclick="this.previousElementSibling.toggleAttribute('disabled'); this.classList.toggle('clicked')"
@@ -124,82 +134,12 @@ $phone_number = $result[0]["phone_number"];
         </div>
         <div class="d-flex justify-content-end ">
             <button class="btn btn-primary " type="button" data-bs-toggle="modal"
-                    data-bs-target="#password_confirmation">
+                    data-bs-target="#password_confirmation" id="save-changes">
                 Enregistrer <i class="fa-solid fa-inbox"></i></button>
         </div>
 
     </form>
 </main>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Edit profile</h4>
-            </div>
-            <div class="container">
-                <div class="mb-4 mt-3">
-                    <label for="btn" class="mb-2"> Mot de passe actuel</label>
-                    <div class="input-group mb-3 ">
-                        <input type="text" class="form-control" placeholder=" MOT DE PASSE ACTUEL"
-                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                    </div>
-                    <hr>
-                    <div class="d-grid gap-2 d-flex justify-content-end mt-3 mb-3">
-                        <button class="btn btn-outline-primary" type="button">Annuler</button>
-                        <button class="btn btn-primary" type="button">Terminé</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="Modezddal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Changer le mot de passe </h4>
-            </div>
-            <div class="container">
-                <div class="mb-4 mt-3">
-                    <label for="btn" class="mb-2"> Mot de passe actuel</label>
-                    <div class="input-group mb-3 ">
-                        <input type="text" class="form-control" placeholder=" MOT DE PASSE ACTUEL"
-                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                    </div>
-
-                </div>
-                <div class="mb-4 mt-3">
-                    <label for="btn" class="mb-2"> Mot de passe actuel</label>
-                    <div class="input-group mb-3 ">
-                        <input type="text" class="form-control" placeholder=" MOT DE PASSE ACTUEL"
-                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                    </div>
-
-                </div>
-                <div class="mb-4 mt-3">
-                    <label for="btn" class="mb-2"> Mot de passe actuel</label>
-                    <div class="input-group mb-3 ">
-                        <input type="text" class="form-control" placeholder=" MOT DE PASSE ACTUEL"
-                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                    </div>
-                    <hr>
-                </div>
-                <div class="d-grid gap-2 d-flex justify-content-end mt-3 mb-3">
-                    <button class="btn btn-outline-primary" type="button">Annuler</button>
-                    <button class="btn btn-primary" type="button">Terminé</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal fade" id="password_confirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -208,21 +148,81 @@ $phone_number = $result[0]["phone_number"];
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmer votre identité</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="relative">
-                    <input type="password" id="password"
-                           name="pwd"
-                           class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                           placeholder=" "/>
-                    <label for="password"
-                           class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
-                        de pass</label>
+            <form action="update_user.php" method="get">
+                <div class="modal-body">
+                    <div class="error">
+                        <p>Veuillez saisir un mot de pass</p>
+                        <p>Veuillez saisir une adresse e-mail valide</p>
+                        <p>Veuillez saisir un numéro de téléphone valide</p>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="password"
+                               name="pwd"
+                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                               placeholder=" "/>
+                        <label for="password"
+                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
+                            de pass</label>
+                    </div>
+                    <input type="text" name="email" id="email_modal" class="hidden">
+                    <input type="text" name="tel" id="tel_modal" class="hidden">
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="password_change" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmer votre identité</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Sauvegarder</button>
-            </div>
+            <form action="update_user.php" method="get">
+                <div class="modal-body">
+                    <div class="error">
+                        <p>Veuillez remplir tous les champs</p>
+                        <p>veuillez entrer un mot de passe plus fort</p>
+                        <p>les nouveaux mots de passe ne correspondent pas</p>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="old_password"
+                               name="old_pwd"
+                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                               placeholder=" "/>
+                        <label for="old_password"
+                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
+                            de pass</label>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="new_password"
+                               name="new_pwd"
+                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                               placeholder=" "/>
+                        <label for="new_password"
+                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
+                            de pass</label>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="new_password_confirm"
+                               name="new_pwd_confirm"
+                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                               placeholder=" "/>
+                        <label for="new_password_confirm"
+                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
+                            de pass</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -233,5 +233,6 @@ $phone_number = $result[0]["phone_number"];
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+<script src="../javascript/profile.js"></script>
 </body>
 </html>

@@ -75,16 +75,23 @@ main {
     }
   }
   form {
-    width: 100%;
-    padding: 3rem 3rem;
-    display: flex;
-    flex-direction: column;
+    padding: 3rem 3rem !important;
     gap: 1.5rem;
   }
   div:not(:last-child) {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+  }
+}
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
 input[disabled] {
@@ -117,4 +124,37 @@ input:not([type=submit]):focus {
 input:not([type=submit]):focus ~ label {
   color: #6271DD !important;
   background-color: white;
+}
+.error {
+ *{
+   display: none;
+ }
+  display: none;
+  color: $red;
+  background-color: rgba(231, 64, 64, 0.1);
+  border: 1px solid $red;
+  width: 100%;
+  padding: .5rem 1rem;
+  border-radius: .3rem;
+}
+.response {
+  width: 100%;
+  border-right: none !important;
+  border-left: none !important;
+  &.true {
+    width: 100%;
+    background-color: rgba(0, 145, 54, 0.42);
+    border: 1px solid $green;
+    color: $green;
+    padding: .5rem;
+    text-align: center;
+  }
+  &.false {
+    color: $red;
+    background-color: rgba(231, 64, 64, 0.1);
+    border: 1px solid $red;
+    width: 100%;
+    text-align: center;
+    padding: .5rem;
+  }
 }

@@ -39,6 +39,14 @@ a, button {
   padding: 0;
 }
 
+p {
+  margin: 0 !important;
+}
+
+.show {
+  display: block !important;
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -230,16 +238,24 @@ main .input-group button.clicked {
   color: white;
 }
 main form {
-  width: 100%;
-  padding: 3rem 3rem;
-  display: flex;
-  flex-direction: column;
+  padding: 3rem 3rem !important;
   gap: 1.5rem;
 }
 main div:not(:last-child) {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+form .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 input[disabled] {
@@ -277,6 +293,41 @@ input:not([type=submit]):focus {
 input:not([type=submit]):focus ~ label {
   color: #6271DD !important;
   background-color: white;
+}
+
+.error {
+  display: none;
+  color: #E74040;
+  background-color: rgba(231, 64, 64, 0.1);
+  border: 1px solid #E74040;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+}
+.error * {
+  display: none;
+}
+
+.response {
+  width: 100%;
+  border-right: none !important;
+  border-left: none !important;
+}
+.response.true {
+  width: 100%;
+  background-color: rgba(0, 145, 54, 0.42);
+  border: 1px solid #009136;
+  color: #009136;
+  padding: 0.5rem;
+  text-align: center;
+}
+.response.false {
+  color: #E74040;
+  background-color: rgba(231, 64, 64, 0.1);
+  border: 1px solid #E74040;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
 }
 
 /*# sourceMappingURL=profile.css.map */
