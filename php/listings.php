@@ -143,73 +143,95 @@ include_once "dbconfig.php";
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter une annonce</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="php/add.php" method="post" enctype="multipart/form-data">
+                <form action="add.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <div class="input">
-                            <div class="relative">
-                                <input type="text" id="title"
-                                       name="title"
-                                       class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                       placeholder=" "/>
-                                <label for="title"
-                                       class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Titre</label>
+                        <div class="all d-flex flex-row gap-4">
+                            <div class="left d-flex flex-col gap-4 w-100">
+                                <div class="input">
+                                    <div class="relative">
+                                        <input type="text" id="title"
+                                               name="title"
+                                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                               placeholder=" " required/>
+                                        <label for="title"
+                                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Titre</label>
+                                    </div>
+                                    <p class="error">le nom ne peut pas contenir de chiffres ni de caractères
+                                        spéciaux</p>
+                                </div>
+                                <div class="input">
+                                    <div class="relative">
+                                        <input type="number" id="price_modal"
+                                               name="price"
+                                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                               placeholder=" " required/>
+                                        <label for="price_modal"
+                                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Price</label>
+                                    </div>
+                                    <p class="error">le nom ne peut pas contenir de chiffres ni de caractères
+                                        spéciaux</p>
+                                </div>
+                                <div class="input">
+                                    <div class="relative">
+                                        <input type="text" id="area"
+                                               name="area"
+                                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                               placeholder=" " required/>
+                                        <label for="area"
+                                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Area (m²)</label>
+                                    </div>
+                                    <p class="error">le nom ne peut pas contenir de chiffres ni de caractères
+                                        spéciaux</p>
+                                </div>
                             </div>
-                            <p class="error">le nom ne peut pas contenir de chiffres ni de caractères spéciaux</p>
-                        </div>
-                        <div class="input-group">
-                            <label for="city_modal" class="hide"></label>
-                            <select name="city" id="city_modal">
-                                <option value="0">Ville</option>
-                                <option value="tanger">Tanger</option>
-                                <option value="casablanca">Casablanca</option>
-                                <option value="rabat">Rabat</option>
-                            </select>
+                            <div class="right d-flex flex-col gap-4 w-100">
+                                <div class="input-group">
+                                    <label for="city_modal" class="hide"></label>
+                                    <select name="city" id="city_modal" required>
+                                        <option value="0">Ville</option>
+                                        <option value="tanger">Tanger</option>
+                                        <option value="casablanca">Casablanca</option>
+                                        <option value="rabat">Rabat</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="category_select" class="hide"></label>
+                                    <select name="category" id="category_select" required>
+                                        <option value="0">Category</option>
+                                        <option value="Vente">vente</option>
+                                        <option value="location">Location</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="type_modal" class="hide"></label>
+                                    <select name="type" id="type_modal" required>
+                                        <option value="0">Type</option>
+                                        <option value="appartement">Appartement</option>
+                                        <option value="maison">Maison</option>
+                                        <option value="villa">Villa</option>
+                                        <option value="bureau">Bureau</option>
+                                        <option value="terrain">Terrain</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="input">
                             <div class="relative">
                                 <input type="text" id="adresse"
                                        name="adresse"
                                        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                       placeholder=" "/>
+                                       placeholder=" " required/>
                                 <label for="adresse"
                                        class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Adresse</label>
                             </div>
-                            <p class="error">le nom ne peut pas contenir de chiffres ni de caractères spéciaux</p>
-                        </div>
-                        <div class="input-group">
-                            <label for="category_select" class="hide"></label>
-                            <select name="category" id="category_select">
-                                <option value="0">Category</option>
-                                <option value="Vente">vente</option>
-                                <option value="location">Location</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label for="type_modal" class="hide"></label>
-                            <select name="type" id="type_modal">
-                                <option value="0">Type</option>
-                                <option value="appartement">Appartement</option>
-                                <option value="maison">Maison</option>
-                                <option value="villa">Villa</option>
-                                <option value="bureau">Bureau</option>
-                                <option value="terrain">Terrain</option>
-                            </select>
-                        </div>
-                        <div class="input">
-                            <div class="relative">
-                                <input type="text" id="price_modal"
-                                       name="price"
-                                       class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                       placeholder=""/>
-                                <label for="price_modal"
-                                       class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Price</label>
-                            </div>
-                            <p class="error">le nom ne peut pas contenir de chiffres ni de caractères spéciaux</p>
+                            <p class="error">le nom ne peut pas contenir de chiffres ni de caractères
+                                spéciaux</p>
                         </div>
                         <div class="input">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                    for="file_input">Image principale</label>
-                            <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                            <input required
+                                   class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                                    name="primary"
                                    id="file_input" type="file">
                         </div>
@@ -223,7 +245,7 @@ include_once "dbconfig.php";
                         <div class="input">
                             <label for="description"
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                            <textarea id="description" rows="4"
+                            <textarea required id="description" rows="4"
                                       class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                       name="description" placeholder="Write your description here..."></textarea>
                         </div>

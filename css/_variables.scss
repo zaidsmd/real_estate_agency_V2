@@ -39,13 +39,20 @@ input, select{
     box-shadow: none ;
   }
 }
-a,button {
+a:not(.profile , .nav-link ,.nav-item),button:not(.profile , .nav-link ,.nav-item) {
   cursor: pointer !important;
   transition: all ease 300ms;
   padding: 0.5rem 1rem !important;
   &:hover {
-    background-color: #485bc8 !important;
     padding: 0.5rem 1.2rem !important;
+  }
+}
+#dropdownAvatar {
+  a {
+    &:hover {
+      background-color: $lightGray !important;
+      padding: 0.5rem 1.2rem !important;
+    }
   }
 }
 .nav-link {
@@ -56,4 +63,14 @@ p {
 }
 .show {
   display: block !important;
+}
+.notFound {
+  text-align: center;
+  color: $darkGray;
+  min-height: 400px;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 70px !important;
+  }
 }
