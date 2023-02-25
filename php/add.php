@@ -13,6 +13,7 @@ if (isset($_SESSION["sign"])){
 $id = $_SESSION["id"];
 $title = $_POST["title"];
 $city = $_POST["city"];
+$country = $_POST["coutry"];
 $adresse = $_POST["adresse"];
 $category = $_POST["category"];
 $type= $_POST["type"];
@@ -21,7 +22,7 @@ $area = $_POST["area"];
 $primary= basename($_FILES["primary"]["name"]);
 $directory = "../files/".$_SESSION["id"]."/";
 $primary_path = $directory.$primary;
-$statement1 = $conn->prepare("INSERT INTO `announcements` (`title`,`city`,`adresse`,`category`,`type`,`price`,`area` ,`user_id`) VALUES ('$title','$city','$adresse','$category','$type','$price','$area','$id')");
+$statement1 = $conn->prepare("INSERT INTO `announcements` (`title`,`city`,`adresse`,`category`,`type`,`price`,`area`,`country` ,`user_id`) VALUES ('$title','$city','$adresse','$category','$type','$price','$area','$country','$id')");
 $statement1->execute();
 $statement3 = $conn->prepare("SELECT `id` FROM `announcements` WHERE `user_id` = '$id' ORDER BY `id` DESC LIMIT 1");
 $statement3->execute();

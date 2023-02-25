@@ -138,6 +138,7 @@ nav .navbar .add-announcement:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 nav .profile {
+  tab-index: 0;
   height: 40px;
   width: max-content;
   border-radius: 0.5rem;
@@ -147,7 +148,8 @@ nav .profile {
   justify-content: center;
   align-items: center;
   border: 2px solid #F6F6F6;
-  padding: 0 1.5rem 0 1rem;
+  padding: 0 1.5rem 0 0;
+  position: relative !important;
 }
 nav .profile:focus {
   box-shadow: 0 0 0 4px rgba(98, 113, 221, 0.6);
@@ -180,6 +182,12 @@ nav a {
 }
 nav a.logout {
   color: #E74040;
+}
+
+#dropdownAvatar {
+  position: absolute !important;
+  transform: none !important;
+  inset: 45px auto auto 10px !important;
 }
 
 * {
@@ -432,6 +440,18 @@ a {
   padding: 0.8rem 0 0 0;
 }
 
+.price-date {
+  color: #8A8B92;
+}
+
+.city {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.city span {
+  color: #8A8B92;
+}
 .city i {
   color: #6271DD;
   font-size: 1.6rem;

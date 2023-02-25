@@ -131,6 +131,7 @@ main {
   flex-direction: row;
   width: 100%;
   gap: 1rem;
+  flex-wrap: nowrap;
 }
 .input-group * {
   width: 100%;

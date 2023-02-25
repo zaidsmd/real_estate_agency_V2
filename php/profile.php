@@ -3,11 +3,11 @@ include_once "dbconfig.php";
 session_start();
 if (isset($_SESSION["sign"])) {
     if (!$_SESSION["sign"]) {
-        header('Location: ../');
+        header('Location: home');
         exit();
     }
 } else {
-    header('Location: ../');
+    header('Location: home');
     exit();
 }
 ?>
@@ -16,78 +16,26 @@ if (isset($_SESSION["sign"])) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://kit.fontawesome.com/6011b958cb.css" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/profile.css">
+    <?php include "css_cdns.php" ?>
+    <link rel="stylesheet" href="css/profile.css">
     <title>Settings</title>
 </head>
 <body>
-<?php
-$id = $_SESSION["id"];
-$statement = $conn->prepare("SELECT * FROM `users` WHERE `id` = '$id'");
-$statement->execute();
-$result = $statement->fetchAll();
-$profile_pic = $result[0]["profile_pic"];
-$name = $result[0]["name"];
-$last_name = $result[0]["last_name"];
-$email = $result[0]["email"];
-$phone_number = $result[0]["phone_number"];
-?>
 <nav>
     <div id="logo">
         <i class="fa-solid fa-house-chimney"></i>
         <span>House Miner</span>
     </div>
     <?php
-    $id = $_SESSION["id"];
-    $statement = $conn->prepare("SELECT * FROM `users` WHERE `id` = '$id'");
-    $statement->execute();
-    $result = $statement->fetchAll();
-    $profile_pic = $result[0]["profile_pic"];
-    $name = $result[0]["name"];
-    $last_name = $result[0]["last_name"];
-    $email = $result[0]["email"];
+    include "navbar.php";
     ?>
-    <div class="navbar">
-        <ul class="nav-list">
-            <li class="nav-item">
-                <a href="../index.php" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-                <a href="listings.php" class="nav-link">Listings</a>
-            </li>
-        </ul>
-    </div>
-    <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
-            class="flex mx-3 text-sm rounded-full md:mr-0 focus:ring-4 profile">
-        <img src='../files/profiles/<?= $profile_pic ?>' alt="">
-        <span><?= $name . ' ' . $last_name ?> </span>
-    </button>
-    <div id="dropdownAvatar"
-         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-        <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <p class="text-center"><?= $name . ' ' . $last_name ?></p>
-            <div class="font-medium truncate"><?= $email ?></div>
-        </div>
-        <a href="profil.php"
-           class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
-        <div class="py-2">
-            <a href="logout.php"
-               class="logout px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                <span>Se déconnecter </span>
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </a>
-        </div>
-    </div>
 </nav>
 <?php
-if (isset($_GET["response"])){
-    if ($_GET["response"] == "true"){
+if (isset($_GET["response"])) {
+    if ($_GET["response"] == "true") {
         echo "<p class='response true'>Vos informations ont été mises à jour avec succès</p>";
-    }else{
+    } else {
         echo "<p class='response false'>Mot de pass incorrect</p>";
     }
 }
@@ -96,7 +44,7 @@ if (isset($_GET["response"])){
     <div class="left">
         <div>
             <div class="img">
-                <img src="../files/profiles/<?= $profile_pic ?>" alt="">
+                <img src="files/profiles/<?= $profile_pic ?>" alt="">
             </div>
             <h6 class=""><?= $name . ' ' . $last_name ?></h6>
         </div>
@@ -226,13 +174,8 @@ if (isset($_GET["response"])){
         </div>
     </div>
 </div>
-<!-- Link to Bootstrap JavaScript file -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-<script src="../javascript/profile.js"></script>
+<?php include "js_cdns.php" ?>
+<script src="javascript/profile.js"></script>
+<script src="javascript/dropdrown.js"></script>
 </body>
 </html>

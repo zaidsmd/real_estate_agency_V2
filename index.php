@@ -1,5 +1,5 @@
 <?php
-include_once "php/dbconfig.php";
+include "php/dbconfig.php";
 session_start();
 ?>
     <!doctype html>
@@ -9,10 +9,7 @@ session_start();
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-              crossorigin="anonymous">
+        <?php include "php/css_cdns.php" ?>
         <link rel="stylesheet" href="css/style.css">
         <title>House Miner</title>
     </head>
@@ -25,76 +22,45 @@ session_start();
         <?php
         if (isset($_SESSION["sign"])) {
             if ($_SESSION["sign"]) {
-                $id = $_SESSION["id"];
-                $statement = $conn->prepare("SELECT * FROM `users` WHERE `id` ='$id' ");
-                $statement->execute();
-                $result = $statement->fetchAll();
-                $profile_pic = $result[0]["profile_pic"];
-                $name = $result[0]["name"];
-                $last_name = $result[0]["last_name"];
-                $email = $result[0]["email"];
+                include "php/navbar.php"
                 ?>
-                <div class="navbar">
-                    <ul class="nav-list">
-                        <li class="nav-item">
-                            <a href="index.php" class=" active nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="php/listings.php" class="nav-link">Listings</a>
-                        </li>
-                    </ul>
-                    <button class="add-announcement" type="button" data-bs-toggle="modal"
-                            data-bs-target="#add_announcement">Ajouter une announce
-                    </button>
-                </div>
-                <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
-                        class="flex mx-3 text-sm rounded-full md:mr-0 focus:ring-4 profile">
-                    <img src='files/profiles/<?= $profile_pic ?>' alt="">
-                    <span><?= $name . ' ' . $last_name ?> </span>
-                </button>
-                <div id="dropdownAvatar"
-                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                        <p class="text-center"><?= $name . ' ' . $last_name ?></p>
-                        <div class="font-medium truncate"><?= $email ?></div>
-                    </div>
-                    <a href="php/profil.php"
-                       class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Paramètres</a>
-                    <div class="py-2">
-                        <a href="php/logout.php"
-                           class=" logout px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                            <span>Se déconnecter </span>
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        </a>
-                    </div>
-                </div>
             <?php } else {
-                echo "<a id='login-home' href='php/login.php'>Se connecter</a>";
+                echo "<a id='login-home' href='login'>Se connecter</a>";
             }
         } else {
-            echo "<a id='login-home' href='php/login.php'>Se connecter</a>";
+            echo "<a id='login-home' href='login'>Se connecter</a>";
         }
         ?>
     </nav>
     <main>
         <aside>
-            <form action="">
+            <form action="" method="get">
+                <div class="input-group">
+                    <h6>Pays</h6>
+                    <label for="country_aside" class="hide"></label>
+                    <select name="country" id="country_aside">
+                        <option disabled selected value="0">Pays</option>
+                        <?php
+                        include "php/api.php"
+                        ?>
+                    </select>
+                </div>
                 <div class="input-group">
                     <h6>Ville</h6>
                     <label for="city" class="hide"></label>
                     <select name="city" id="city">
-                        <option value="0">Ville</option>
+                        <option disabled selected value="0">Ville</option>
                     </select>
                 </div>
                 <div class="input-group">
                     <h6>Catégories</h6>
                     <div class="checkbox">
                         <label for="sale">Vente</label>
-                        <input type="checkbox" name="sale" id="sale">
+                        <input type="checkbox" value="vente" name="sale" id="sale">
                     </div>
                     <div class="checkbox">
                         <label for="rent">Location</label>
-                        <input type="checkbox" name="rent" id="rent">
+                        <input type="checkbox" value="location" name="rent" id="rent">
                     </div>
                 </div>
                 <div class="input-group">
@@ -111,7 +77,7 @@ session_start();
                     <h6>Types</h6>
                     <div class="checkbox">
                         <label for="appartement">Appartement</label>
-                        <input type="checkbox" name="appartement" id="appartement">
+                        <input type="checkbox" value="appartement" name="appartement" id="appartement">
                     </div>
                     <div class="checkbox">
                         <label for="house">Maison</label>
@@ -119,27 +85,52 @@ session_start();
                     </div>
                     <div class="checkbox">
                         <label for="villa">Villa</label>
-                        <input type="checkbox" name="villa" id="villa">
+                        <input type="checkbox" value="=villa" name="villa" id="villa">
                     </div>
                     <div class="checkbox">
                         <label for="desk">Bureau</label>
-                        <input type="checkbox" name="desk" id="desk">
+                        <input type="checkbox" value="bureau" name="desk" id="desk">
                     </div>
                     <div class="checkbox">
                         <label for="field">Terrain</label>
-                        <input type="checkbox" name="field" id="field">
+                        <input type="checkbox" value="terrain" name="field" id="field">
                     </div>
                 </div>
-                <input type="submit" value="Rechercher">
+                <input type="submit" name="submit" value="Rechercher">
             </form>
         </aside>
         <section>
             <div class="cards d-flex flex-wrap justify-content-lg-around justify-content-md-around">
                 <?php
-                $statement = $conn->prepare("SELECT * FROM `announcements`");
+                $query = "SELECT * FROM `announcements` WHERE 1 ";
+                if (isset($_GET["submit"])){
+                    $keys = array_keys($_GET);
+                    foreach ($keys as $key){
+                        if (isset($_GET[$key])){
+                            if ($_GET[$key] != "Rechercher" && $_GET[$key] != 0 && $key != "min" && $key != "max"){
+                                $value = $_GET["$key"];
+                                if ($key == "sale" || $key == "rent"){
+                                    $key = "category";
+                                }elseif ($key == "appartement" || $key == "house" ||$key =="villa" ||$key == "desk"|| $key == "field"){
+                                    $key = "type";
+                                }
+                                $query.= " AND $key = '$value' ";
+                            }elseif ($key == "min" && $_GET[$key] != ""){
+                                $value = $_GET["$key"];
+                                $key = "price";
+                                $query.= " AND $key > '$value' ";
+                            }elseif ($key == "max" && $_GET[$key] != ""){
+                                $value = $_GET["$key"];
+                                $key = "price";
+                                $query.= " AND $key < '$value' ";
+                            }
+                        }
+                    }
+                }
+                $statement = $conn->prepare($query);
                 $statement->execute();
                 $result = $statement->fetchAll();
-                createCard($result);
+                createCard($result,$conn);
                 ?>
             </div>
         </section>
@@ -187,7 +178,8 @@ session_start();
                                                    class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                                    placeholder=" " required/>
                                             <label for="area"
-                                                   class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Area (m²)</label>
+                                                   class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Area
+                                                (m²)</label>
                                         </div>
                                         <p class="error">le nom ne peut pas contenir de chiffres ni de caractères
                                             spéciaux</p>
@@ -210,9 +202,9 @@ session_start();
                                         <label for="country" class="hide"></label>
                                         <select name="country" id="country" required>
                                             <option selected disabled>Country</option>
-                                          <?php
-                                          include "php/api.php"
-                                          ?>
+                                            <?php
+                                            include "php/api.php"
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="input-group">
@@ -274,44 +266,46 @@ session_start();
             </div>
         </div>
     </main>
-    <script src="javascript/script.js" ></script>
-    <script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <script src="javascript/script.js"></script>
+    <script src="javascript/dropdrown.js"></script>
+    <?php include "php/js_cdns.php" ?>
     </body>
     </html>
 <?php
-function createCard($data)
+function createCard($data,$conn)
 {
 // I had to check if there is data bcs we have search data too,
 // if there is no matching data requested the user should know, so he doesn't think that the website is broken;
     if ($data != null) {
         foreach ($data as $row) {
-                //you can notice that there is onclick function that takes the all data of the card and pass it to the js to be used onclick to affiche all data
+            //you can notice that there is onclick function that takes the all data of the card and pass it to the js to be used onclick to affiche all data
+            $announcement_id = $row["id"];
+            $statement = $conn->prepare("SELECT `path` FROM `pictures` WHERE  `announcement_id` = '$announcement_id' AND `primary` = 1");
+            $statement->execute();
+            $image = $statement->fetchAll();
             ?>
             <div class="card-container">
                 <div class="card">
                     <div class="card-img">
-                        <img src="files/6/placeholder-4.png"
+                        <img src="files/<?= $image[0]["path"]?>"
                              class="card-img-top" alt="">
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title"><?= $row["title"]?></h4>
+                        <h4 class="card-title"><?= $row["title"] ?></h4>
                         <div class="tags">
-                            <div class="tag"><?=$row["category"]?></div>
-                            <div class="tag"><?=$row["area"]?>m²</div>
+                            <div class="tag"><?= $row["category"] ?></div>
+                            <div class="tag"><?= $row["area"] ?>m²</div>
                         </div>
-                        <div class="adresse"><?=$row["adresse"]?></div>
+                        <div class="adresse"><?= $row["adresse"] ?></div>
                         <div class="price-date d-flex flex-row align-items-center justify-between">
-                            <p class="price"><?=number_format($row["price"],2)?> </p> <span><?=$row["update"]?></span>
+                            <p class="price"><?= number_format($row["price"], 2) ?> </p>
+                            <span><?= $row["update"] ?></span>
                         </div>
                         <div class="footer d-flex flex-row justify-between align-items-center">
                             <div class="city">
-                                <i class="fa-sharp fa-solid fa-location-dot"></i><span<?=$row["city"]?></span>
+                                <i class="fa-sharp fa-solid fa-location-dot"></i><span><?= $row["city"] ?></span>
                             </div>
-                            <a href="php/details.php?id=<?=$row["id"]?>" class="btn btn-primary">Voir Plus</a>
+                            <a href="php/details.php?id=<?= $row["id"] ?>" class="btn btn-primary">Voir Plus</a>
                         </div>
                     </div>
                 </div>

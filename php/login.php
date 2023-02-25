@@ -3,7 +3,7 @@ include "dbconfig.php";
 session_start();
 if (isset($_SESSION["sign"])){
     if ($_SESSION["sign"]){
-        header('Location: ../');
+        header('Location: home');
         exit();
     }
 }
@@ -15,8 +15,8 @@ if (isset($_SESSION["sign"])){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../css/register.css">
+    <?php include "css_cdns.php"?>
+    <link rel="stylesheet" href="css/register.css">
     <title>Se connecter</title>
 </head>
 <body>
@@ -26,7 +26,7 @@ if (isset($_SESSION["sign"])){
             <i class="fa-solid fa-house-chimney"></i>
             <span>House Miner</span>
         </div>
-        <form action="login.php" method="get">
+        <form action="login" method="get">
             <?php
             if (isset($_GET['email'])){
                 $email = $_GET['email'];
@@ -39,7 +39,7 @@ if (isset($_SESSION["sign"])){
                     $_SESSION['name'] = $result[0]["name"];
                     $_SESSION['lastname']= $result[0]["last_name"];
                     $_SESSION['id']= $result[0]["id"];
-                    header("Location: ../");
+                    header("Location: home");
                     exit();
                 }else {
                     echo "<p class='response'>Le mot de pass ou email est incorrect</p>";
@@ -74,11 +74,10 @@ if (isset($_SESSION["sign"])){
         </form>
     </div>
     <div class="left">
-        <img src="../pic/screenshot.png" alt="">
+        <img src="pic/screenshot.png" alt="">
     </div>
 </main>
-<script src="https://kit.fontawesome.com/a5fdcae6a3.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
-<script src="../javascript/register.js"></script>
+<?php include "js_cdns.php"?>
+<script src="javascript/register.js"></script>
 </body>
 </html>

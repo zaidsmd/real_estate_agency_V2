@@ -175,7 +175,6 @@ a {
     flex-direction: column;
     gap: .6rem;
   }
-
 }
 .card-title {
   display: -webkit-box;
@@ -236,7 +235,16 @@ a {
   border-top: 1px solid rgba(0,0,0,0.2);
   padding: .8rem 0 0 0 ;
 }
+.price-date {
+  color: $darkGray;
+}
 .city {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  span {
+    color: $darkGray;
+  }
   i {
     color: $primaryPurple;
     font-size: 1.6rem;

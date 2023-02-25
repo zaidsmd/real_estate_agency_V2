@@ -69,6 +69,7 @@ nav {
     }
   }
   .profile {
+    tab-index: 0;
     height: 40px;
     width: max-content;
     border-radius: .5rem;
@@ -78,7 +79,8 @@ nav {
     justify-content: center;
     align-items: center;
     border: 2px solid $lightGray ;
-    padding: 0 1.5rem 0 1rem;
+    padding: 0 1.5rem 0 0;
+    position: relative !important;
     &:focus {
       box-shadow: 0 0 0 4px rgba(98, 113, 221, 0.60);
     }
@@ -112,4 +114,9 @@ nav {
       color: $red;
     }
   }
+}
+#dropdownAvatar {
+  position: absolute !important;
+  transform: none !important;
+  inset: 45px auto auto 10px !important;
 }
