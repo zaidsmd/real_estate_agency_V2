@@ -34,9 +34,12 @@ if (isset($_SESSION["sign"])) {
                 $email = $_GET["email"];
                 $pwd = md5($_GET["pwd"]);
                 $phone_number = $_GET["tel"];
+                //---------*get id of the row that has the entered email*--------
                 $statement = $conn->prepare("SELECT `id` FROM `users` WHERE `email` = '$email'");
                 $statement ->execute();
                 $result = $statement->fetchAll();
+                //---------*get id of the row that has the entered email end*--------
+                //---------*check if there is and row if yes the email is already taken if not the register process contitnues*--------
                 if (count($result)==0) {
                     $statement = $conn->prepare("INSERT INTO `users` (`name`,`last_name`,`email`,`password`,`phone_number`) VALUES ('$name','$last_name','$email','$pwd','$phone_number')");
                     $statement->execute();
@@ -45,6 +48,7 @@ if (isset($_SESSION["sign"])) {
                 }else {
                     echo "<p class='response'>Cette adresse e-mail est déjà prise</p>";
                 }
+                //---------*end of script php*--------
             }
             ?>
             <div class="input-group">

@@ -25,10 +25,10 @@ session_start();
                 include "php/navbar.php"
                 ?>
             <?php } else {
-                echo "<a id='login-home' href='login'>Se connecter</a>";
+                echo "<a id='login-home' href='php/login.php'>Se connecter</a>";
             }
         } else {
-            echo "<a id='login-home' href='login'>Se connecter</a>";
+            echo "<a id='login-home' href='php/login.php'>Se connecter</a>";
         }
         ?>
     </nav>

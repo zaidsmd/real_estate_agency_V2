@@ -1,16 +1,16 @@
 <?php
 if (explode("/",$_SERVER["PHP_SELF"])[count(explode("/",$_SERVER["PHP_SELF"]))-1]=="index.php"){
-    $profilePHPDirectory = "profile";
-    $listingsPHPDirectory = "listings";
-    $logoutPHPDirectory = "logout";
+    $profilePHPDirectory = "php/profile.php";
+    $listingsPHPDirectory = "php/listings.php";
+    $logoutPHPDirectory = "php/logout.php";
     $profileDirectory = "files/profiles/";
-    $rootDirectory = "index.php";
+    $rootDirectory = "";
 }else {
-    $profilePHPDirectory = "profile";
-    $listingsPHPDirectory = "listings";
+    $profilePHPDirectory = "profile.php";
+    $listingsPHPDirectory = "listings.php";
     $logoutPHPDirectory = "logout";
-    $profileDirectory = "files/profiles/";
-    $rootDirectory = "home";
+    $profileDirectory = "../files/profiles/";
+    $rootDirectory = "../";
 }
 $id = $_SESSION["id"];
 $statement = $conn->prepare("SELECT * FROM `users` WHERE `id` = '$id'");

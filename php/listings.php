@@ -19,7 +19,7 @@ include_once "dbconfig.php";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php include "css_cdns.php"?>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>House Miner</title>
 </head>
 <body>
@@ -39,7 +39,7 @@ include_once "dbconfig.php";
                 <select name="country" id="country_aside">
                     <option disabled selected value="0">Pays</option>
                     <?php
-                    include "php/api.php"
+                    include "api.php"
                     ?>
                 </select>
             </div>
@@ -266,8 +266,8 @@ include_once "dbconfig.php";
     </div>
 </main>
 <?php include "js_cdns.php"?>
-<script src="javascript/script.js"></script>
-<script src="javascript/dropdrown.js"></script>
+<script src="../javascript/script.js"></script>
+<script src="../javascript/dropdrown.js"></script>
 </body>
 </html>
 <?php
@@ -286,7 +286,7 @@ function createCard($data,$conn)
             <div class="card-container">
                 <div class="card">
                     <div class="card-img">
-                        <img src="files/<?=$image[0]["path"]?>"
+                        <img src="<?=$image[0]["path"]?>"
                              class="card-img-top" alt="">
                     </div>
                     <div class="card-body">
@@ -304,7 +304,7 @@ function createCard($data,$conn)
                             <div class="city">
                                 <i class="fa-sharp fa-solid fa-location-dot"></i><span><?= $row["city"] ?></span>
                             </div>
-                            <a href="php/details.php?id=<?= $row["id"] ?>" class="btn btn-primary">Voir Plus</a>
+                            <a href="details.php?id=<?= $row["id"] ?>" class="btn btn-primary">Voir Plus</a>
                         </div>
                     </div>
                 </div>

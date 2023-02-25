@@ -6,11 +6,11 @@ $dbname = "world";
 
 try {
     $conn1 = new PDO("mysql:host=$servername;dbname=$dbname", $user, $password);
-    // set the PDO error mode to exception
     $conn1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 };
+//---------*check if this file is called by get methode or just include*--------
 if (isset($_GET["id"])) {
     $country_id = $_GET["id"];
     $statement = $conn1->prepare("SELECT name FROM cities WHERE country_id = $country_id");

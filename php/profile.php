@@ -3,11 +3,11 @@ include_once "dbconfig.php";
 session_start();
 if (isset($_SESSION["sign"])) {
     if (!$_SESSION["sign"]) {
-        header('Location: home');
+        header('Location: ../');
         exit();
     }
 } else {
-    header('Location: home');
+    header('Location: ../');
     exit();
 }
 ?>
@@ -18,7 +18,7 @@ if (isset($_SESSION["sign"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include "css_cdns.php" ?>
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <title>Settings</title>
 </head>
 <body>
@@ -44,7 +44,7 @@ if (isset($_GET["response"])) {
     <div class="left">
         <div>
             <div class="img">
-                <img src="files/profiles/<?= $profile_pic ?>" alt="">
+                <img src="../files/profiles/<?= $profile_pic ?>" alt="">
             </div>
             <h6 class=""><?= $name . ' ' . $last_name ?></h6>
         </div>
@@ -73,7 +73,7 @@ if (isset($_GET["response"])) {
         <div>
             <label for="tel">Telephone</label>
             <div class="input-group">
-                <input disabled type="text" id="tel" name="phone_number" class="form-control" placeholder="numbre phone"
+                <input disabled type="text" id="tel" name="phone_number" class="form-control"
                        value="<?= $phone_number ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary"
                         onclick="this.previousElementSibling.toggleAttribute('disabled'); this.classList.toggle('clicked')"
@@ -141,11 +141,16 @@ if (isset($_GET["response"])) {
                     <div class="relative">
                         <input type="password" id="old_password"
                                name="old_pwd"
-                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                               class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1
+                               border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500
+                                focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                placeholder=" "/>
                         <label for="old_password"
-                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
-                            de pass</label>
+                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]
+                               px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+                               peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                            Mot de passe actuel
+                        </label>
                     </div>
                     <div class="relative">
                         <input type="password" id="new_password"
@@ -153,8 +158,11 @@ if (isset($_GET["response"])) {
                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                placeholder=" "/>
                         <label for="new_password"
-                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
-                            de pass</label>
+                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2
+                               peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
+                               peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                            Nouveau mot de passe
+                        </label>
                     </div>
                     <div class="relative">
                         <input type="password" id="new_password_confirm"
@@ -162,8 +170,12 @@ if (isset($_GET["response"])) {
                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                placeholder=" "/>
                         <label for="new_password_confirm"
-                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Mot
-                            de pass</label>
+                               class="absolute text-sm  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0]
+                               px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2
+                               peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4
+                               left-1">
+                            Confirmez le nouveau mot de passe
+                        </label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -175,7 +187,7 @@ if (isset($_GET["response"])) {
     </div>
 </div>
 <?php include "js_cdns.php" ?>
-<script src="javascript/profile.js"></script>
-<script src="javascript/dropdrown.js"></script>
+<script src="../javascript/profile.js"></script>
+<script src="../javascript/dropdrown.js"></script>
 </body>
 </html>

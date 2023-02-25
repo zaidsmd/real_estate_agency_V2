@@ -3,7 +3,7 @@ include "dbconfig.php";
 session_start();
 if (isset($_SESSION["sign"])){
     if ($_SESSION["sign"]){
-        header('Location: home');
+        header('Location: ../');
         exit();
     }
 }
@@ -16,7 +16,7 @@ if (isset($_SESSION["sign"])){
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php include "css_cdns.php"?>
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="../css/register.css">
     <title>Se connecter</title>
 </head>
 <body>
@@ -26,25 +26,28 @@ if (isset($_SESSION["sign"])){
             <i class="fa-solid fa-house-chimney"></i>
             <span>House Miner</span>
         </div>
-        <form action="login" method="get">
+        <form action="" method="get">
             <?php
             if (isset($_GET['email'])){
                 $email = $_GET['email'];
                 $pwd = md5($_GET['pwd']);
+                //---------*because I have md5 encryption it only takes me to compare the pwd given with the one I have in db with one single request*--------
                 $statement = $conn->prepare("SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$pwd'");
                 $statement->execute();
                 $result= $statement->fetchAll();
+                //---------*if the email and pwd matches that successful login else the user has typed wrong informations*--------
                 if (count($result)==1){
                     $_SESSION['sign'] = true;
                     $_SESSION['name'] = $result[0]["name"];
                     $_SESSION['lastname']= $result[0]["last_name"];
                     $_SESSION['id']= $result[0]["id"];
-                    header("Location: home");
+                    header("Location: ../");
                     exit();
                 }else {
                     echo "<p class='response'>Le mot de pass ou email est incorrect</p>";
                 }
             }
+            //---------*end of script*--------
             ?>
             <div class="input">
                 <div class="relative">
@@ -74,10 +77,10 @@ if (isset($_SESSION["sign"])){
         </form>
     </div>
     <div class="left">
-        <img src="pic/screenshot.png" alt="">
+        <img src="../pic/screenshot.png" alt="">
     </div>
 </main>
 <?php include "js_cdns.php"?>
-<script src="javascript/register.js"></script>
+<script src="../javascript/register.js"></script>
 </body>
 </html>
