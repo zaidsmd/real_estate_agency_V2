@@ -15,18 +15,19 @@ if (isset($_SESSION["sign"])){
 $id = $_SESSION["id"];
 $title = $_POST["title"];
 $city = $_POST["city"];
-$country = $_POST["coutry"];
+$country = $_POST["country"];
 $adresse = $_POST["adresse"];
 $category = $_POST["category"];
 $type= $_POST["type"];
 $price = $_POST["price"];
 $area = $_POST["area"];
+$description = $_POST["description"];
 $primary= basename($_FILES["primary"]["name"]);
 $directory = "../files/".$_SESSION["id"]."/";
 $primary_path = $directory.$primary;
 //---------*get all data from post end*----------------
 //---------*insert data announcement to announcement table*----------------
-$statement1 = $conn->prepare("INSERT INTO `announcements` (`title`,`city`,`adresse`,`category`,`type`,`price`,`area`,`country` ,`user_id`) VALUES ('$title','$city','$adresse','$category','$type','$price','$area','$country','$id')");
+$statement1 = $conn->prepare("INSERT INTO `announcements` (`title`,`city`,`adresse`,`category`,`type`,`price`,`area`,`country`,`description` ,`user_id`) VALUES ('$title','$city','$adresse','$category','$type','$price','$area','$country','$description','$id')");
 $statement1->execute();
 //---------*insert data announcement to announcement table end*----------------
 //---------*get the id of this announcement*----------------
