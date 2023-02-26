@@ -1,5 +1,6 @@
 <?php
-if (explode("/",$_SERVER["PHP_SELF"])[count(explode("/",$_SERVER["PHP_SELF"]))-1]=="index.php"){
+$thisFile =explode("/",$_SERVER["PHP_SELF"])[count(explode("/",$_SERVER["PHP_SELF"]))-1];
+if ($thisFile=="index.php"){
     $profilePHPDirectory = "php/profile.php";
     $listingsPHPDirectory = "php/listings.php";
     $logoutPHPDirectory = "php/logout.php";
@@ -21,17 +22,18 @@ $name = $result[0]["name"];
 $last_name = $result[0]["last_name"];
 $email = $result[0]["email"];
 $phone_number = $result[0]["phone_number"];
+
 ?>
     <div class="navbar">
         <ul class="nav-list">
             <li class="nav-item">
-                <a href="<?=$rootDirectory?>" class=" <?php echo (explode("/",$_SERVER["PHP_SELF"])[count(explode("/",$_SERVER["PHP_SELF"]))-1]=="index.php") ? "active": "" ?> nav-link">Home</a>
+                <a href="<?=$rootDirectory?>" class=" <?php echo ($thisFile=="index.php") ? "active": "" ?> nav-link">Home</a>
             </li>
             <li class="nav-item">
-                <a href="<?=$listingsPHPDirectory?>" class="<?php echo (explode("/",$_SERVER["PHP_SELF"])[count(explode("/",$_SERVER["PHP_SELF"]))-1]=="listings.php") ? "active" :"" ?> nav-link">Listings</a>
+                <a href="<?=$listingsPHPDirectory?>" class="<?php echo ($thisFile =="listings.php") ? "active" :"" ?> nav-link">Listings</a>
             </li>
         </ul>
-        <?php echo (explode("/",$_SERVER["PHP_SELF"])[count(explode("/",$_SERVER["PHP_SELF"]))-1]) == "profile.php" ? "": "<button class='add-announcement' type='button' data-bs-toggle='modal'data-bs-target='#add_announcement'>Ajouter une announce</button>" ?>
+        <?php echo ($thisFile == "profile.php" || $thisFile == "details.php") ? "": "<button class='add-announcement' type='button' data-bs-toggle='modal'data-bs-target='#add_announcement'>Ajouter une announce</button>" ?>
     </div>
 <div class="position-relative">
     <button id="dropdownUserAvatarButton"
