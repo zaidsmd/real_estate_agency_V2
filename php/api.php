@@ -11,7 +11,7 @@ try {
     echo "Connection failed: " . $e->getMessage();
 };
 //---------*check if this file is called by get methode or just include*--------
-if (isset($_GET["id"])) {
+if (isset($_GET["id"]) && isset($_GET["fetch"])) {
     $country_id = $_GET["id"];
     $statement = $conn1->prepare("SELECT name FROM cities WHERE country_id = $country_id");
     $statement->execute();
