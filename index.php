@@ -298,7 +298,7 @@ function createCard($data,$conn)
                         </div>
                         <div class="adresse"><?= $row["adresse"] ?></div>
                         <div class="price-date d-flex flex-row align-items-center justify-between">
-                            <p class="price"><?= number_format($row["price"], 2) ?> </p>
+                            <p class="price">$ <?= number_format($row["price"], 2) ?> </p>
                             <span><?= $row["update"] ?></span>
                         </div>
                         <div class="footer d-flex flex-row justify-between align-items-center">

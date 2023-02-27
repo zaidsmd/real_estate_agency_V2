@@ -6,6 +6,6 @@ if (!isset($_SESSION["sign"])) {
 }else {
     session_unset();
     session_destroy();
-    header('Location: home');
+    header('Location: ../');
     exit();
 }

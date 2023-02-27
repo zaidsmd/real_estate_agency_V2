@@ -93,20 +93,6 @@ $phone_number = $result[0]["phone_number"];
         </div>
     </div>
 </div>
-<script>
-
-    function copyToClipboard() {
-        // Get the text to copy
-        let textToCopy = document.getElementById("text-to-copy").innerText;
-
-        // Copy the text to the clipboard
-        navigator.clipboard.writeText(textToCopy);
-
-        // Display the copied text in the output element
-        let outputElement = document.getElementById("output");
-        outputElement.innerText = "Copied  Number phone: " + textToCopy;
-    }
-</script>
 <div class="container">
     <div id="carouselExampleControlsNoTouching" class="carousel slide carousel-fade mt-4 rounded"
          data-bs-ride="carousel">
@@ -122,7 +108,7 @@ $phone_number = $result[0]["phone_number"];
                     echo '<div class="carousel-item w-100">';
                 }
 
-                echo '<img src="' . $statement_p['path'] . '" class="d-block rounded"  style="height:400px;" >';
+                echo '<img src="' . $statement_p['path'] . '" class="d-block rounded" >';
                 echo '</div>';
             }
             ?>
@@ -184,6 +170,20 @@ $phone_number = $result[0]["phone_number"];
     include 'js_cdns.php';
     ?>
     <script src="../javascript/dropdrown.js"></script>
+    <script>
+
+        function copyToClipboard() {
+            // Get the text to copy
+            let textToCopy = document.getElementById("text-to-copy").innerText;
+
+            // Copy the text to the clipboard
+            navigator.clipboard.writeText(textToCopy);
+
+            // Display the copied text in the output element
+            let outputElement = document.getElementById("output");
+            outputElement.innerText = "Copied  Number phone: " + textToCopy;
+        }
+    </script>
 </body>
 
 </html>
