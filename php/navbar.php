@@ -4,12 +4,14 @@ if ($thisFile == "index.php") {
     $profilePHPDirectory = "php/profile.php";
     $listingsPHPDirectory = "php/listings.php";
     $logoutPHPDirectory = "php/logout.php";
+    $loginPHPDirectory = "php/login.php";
     $profileDirectory = "files/profiles/";
     $rootDirectory = "";
 } else {
     $profilePHPDirectory = "profile.php";
     $listingsPHPDirectory = "listings.php";
-    $logoutPHPDirectory = "logout";
+    $logoutPHPDirectory = "logout.php";
+    $loginPHPDirectory = "php/login.php";
     $profileDirectory = "../files/profiles/";
     $rootDirectory = "../";
 }
