@@ -22,6 +22,6 @@ $statement1->execute();
 $result1 = $statement1->fetchAll();
 $country = $result1[0]["name"];
 //----------------------------------------------------------
-$result["country"] = $country;
+$result[0]["country_name"] = $country;
 echo json_encode($result);
 

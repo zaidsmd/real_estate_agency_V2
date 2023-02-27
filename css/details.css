@@ -323,4 +323,54 @@ nav a.logout {
   gap: 1rem;
 }
 
+#edit_announcement form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#edit_announcement .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#edit_announcement .error {
+  font-size: 0.8rem;
+  color: #E74040;
+  display: none;
+}
+#edit_announcement select {
+  padding: 0.5rem;
+  color: #8A8B92;
+  height: 48px;
+}
+#edit_announcement input:not([type=submit], [type=file]) {
+  background-color: #F6F6F6 !important;
+  border-radius: 0.3rem !important;
+  padding: 1rem !important;
+  height: 3rem !important;
+  border: none;
+  width: 100%;
+  font-size: 1rem !important;
+}
+#edit_announcement input:not([type=submit], [type=file]):focus {
+  background-color: white !important;
+  border: 1px solid #6271DD !important;
+}
+#edit_announcement input:not([type=submit], [type=file]):focus ~ label {
+  color: #6271DD !important;
+  background-color: white;
+}
+#edit_announcement textarea:hover, #edit_announcement textarea:focus {
+  border-color: #8A8B92 !important;
+  box-shadow: none !important;
+}
+#edit_announcement label {
+  color: #8A8B92 !important;
+  font-size: 1rem;
+}
+#edit_announcement .modal-dialog {
+  max-width: 900px;
+  width: 90%;
+}
+
 /*# sourceMappingURL=details.css.map */

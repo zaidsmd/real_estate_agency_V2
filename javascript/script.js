@@ -2,7 +2,7 @@ if (window.location.pathname.split("/").pop()===""||window.location.pathname.spl
     document.querySelector("#country").addEventListener("change", () => {
         document.querySelector("#city_modal").innerHTML =" <option value=\"0\" selected disabled>Ville</option>";
 
-        fetch("php/api.php?id=" + document.querySelector("#country").value)
+        fetch("php/api.php?id=" + document.querySelector("#country").value+"&fetch=true")
             .then(async (response) => {
                 Array = await response.json();
                 return Array
@@ -18,7 +18,7 @@ if (window.location.pathname.split("/").pop()===""||window.location.pathname.spl
     })
     document.querySelector("#country_aside").addEventListener("change", () => {
         document.querySelector("#city").innerHTML =" <option value=\"0\" selected disabled>Ville</option>";
-        fetch("php/api.php?id=" + document.querySelector("#country_aside").value)
+        fetch("php/api.php?id=" + document.querySelector("#country_aside").value+"&fetch=true")
             .then(async (response) => {
                 Array = await response.json();
                 return Array
@@ -35,7 +35,7 @@ if (window.location.pathname.split("/").pop()===""||window.location.pathname.spl
 }else{
     document.querySelector("#country").addEventListener("change", () => {
         document.querySelector("#city_modal").innerHTML =" <option value=\"0\" selected disabled>Ville</option>";
-        fetch("api.php?id=" + document.querySelector("#country").value)
+        fetch("api.php?id=" + document.querySelector("#country").value+"&fetch=true")
             .then(async (response) => {
                 Array = await response.json();
                 return Array
@@ -51,7 +51,7 @@ if (window.location.pathname.split("/").pop()===""||window.location.pathname.spl
     });
     document.querySelector("#country_aside").addEventListener("change", () => {
         document.querySelector("#city").innerHTML =" <option value=\"0\" selected disabled>Ville</option>";
-        fetch("api.php?id=" + document.querySelector("#country_aside").value)
+        fetch("api.php?id=" + document.querySelector("#country_aside").value+"&fetch=true")
             .then(async (response) => {
                 Array = await response.json();
                 return Array
