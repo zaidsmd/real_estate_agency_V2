@@ -1,16 +1,19 @@
 @import "variables";
 @import "navbar";
+
 .container {
   display: flex;
   width: 100% !important;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  .details , #carouselExampleControlsNoTouching {
+
+  .details, #carouselExampleControlsNoTouching {
     width: 90%;
     max-width: 1024px;
   }
 }
+
 .details {
   padding: 2rem 1rem;
   margin-top: 1rem;
@@ -19,11 +22,14 @@
   flex-direction: column;
   gap: 1rem;
   background-color: $lightBlue;
+
   p {
     text-align: justify !important;
   }
+
   h6 {
     color: $primaryPurple;
+
     &::before {
       content: '';
       display: inline-block;
@@ -35,8 +41,10 @@
       transform: translateY(-50%);
       margin-right: 5px;
     }
+
     margin-bottom: 1.5rem;
   }
+
   .adresse {
     color: $darkGray;
     font-size: .9rem;
@@ -45,25 +53,30 @@
     gap: .5rem;
     align-items: center;
   }
+
   #description {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
     p {
       padding: 0 .9rem;
     }
-    div{
+
+    div {
       span:first-child {
         font-weight: 500;
       }
     }
   }
 }
+
 .map {
   display: flex;
   justify-content: center;
   height: 400px;
   width: 100%;
+
   iframe {
     width: 80%;
     height: 100%;
@@ -71,19 +84,23 @@
     overflow: clip;
   }
 }
+
 .section {
   padding: 2rem 0;
+
   &::before {
     content: "";
     display: block;
 
   }
 }
+
 #carouselExampleControlsNoTouching {
   img {
     width: 100% !important;
   }
 }
+
 .phone-button {
   background-color: #6271DD !important;
 }
@@ -91,10 +108,34 @@
 #output {
   color: #009136;
 }
+
 #price {
   p {
     padding: 0 1rem;
     font-size: 1.2rem;
     font-weight: 500;
   }
+}
+
+.settings {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $primaryPurple;
+  font-size: 1.5rem;
+  cursor: pointer;
+  * {
+    transition: all ease 400ms;
+  }
+}
+
+.fixed-div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
 }
