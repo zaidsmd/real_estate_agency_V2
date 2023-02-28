@@ -41,12 +41,136 @@ if (isset($_GET["response"])) {
 }
 ?>
 <main>
+
+
+    <style media="screen">
+        .upload{
+            width: 140px;
+            position: relative;
+            margin: auto;
+            text-align: center;
+        }
+        .upload img{
+            border-radius: 50%;
+            border: 8px solid #DCDCDC;
+            width: 125px;
+            height: 125px;
+        }
+        .upload .rightRound{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: #00B4FF;
+            width: 32px;
+            height: 32px;
+            line-height: 33px;
+            text-align: center;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .upload .leftRound{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: red;
+            width: 32px;
+            height: 32px;
+            line-height: 33px;
+            text-align: center;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .upload .fa{
+            color: white;
+        }
+        .upload input{
+            position: absolute;
+            transform: scale(2);
+            opacity: 0;
+        }
+        .upload input::-webkit-file-upload-button, .upload input[type=submit]{
+            cursor: pointer;
+        }
+
+        #upload{
+            margin-right: 1.1rem;
+        }
+
+        .fa-regular {
+            color: #F6F6F6;
+        }
+        main form {
+            padding: 0rem 0rem!important;
+            gap: 1.5rem;
+        }
+
+        #information {
+            padding: 3rem 3rem!important;
+        }
+
+        #upload {
+            background-color: #6271DD;
+        }
+
+        .left div h6 {
+            text-align: center;
+
+        }
+    </style>
+
+
+
+
+
     <div class="left">
         <div>
-            <div class="img">
-                <img src="../files/profiles/<?= $profile_pic ?>" alt="">
+            <form  action="update_img_profil.php" enctype="multipart/form-data" method="post">
+                <div class="upload">
+                    <div id="affishier-img">
+                        <img src="../files/profiles/<?= $profile_pic ?>" id="image">
+                    </div>
+
+                    <div class="rightRound" id="upload">
+                        <input type="file" name="primary" id="primary" accept=".jpg, .jpeg, .png">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </div>
+
+                    <div class="leftRound" id="cancel" style="display: none;">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </div>
+                    <div class="rightRound" id="confirm" style="display: none;">
+                        <input type="submit" name="update">
+                        <i class="fa fa-check"></i>
+                    </div>
             </div>
-            <h6 class=""><?= $name . ' ' . $last_name ?></h6>
+            </form>
+
+            <script type="text/javascript">
+                document.getElementById("primary").onchange = function () {
+                    document.getElementById("image").src = URL.createObjectURL(primary.files[0]); // Preview new image
+
+                    document.getElementById("cancel").style.display = "block";
+                    document.getElementById("confirm").style.display = "block";
+
+                    document.getElementById("upload").style.display = "none";
+                }
+
+                var userImage = document.getElementById('image').src;
+                document.getElementById("cancel").onclick = function () {
+                    document.getElementById("image").src = userImage; // Back to previous image
+
+                    document.getElementById("cancel").style.display = "none";
+                    document.getElementById("confirm").style.display = "none";
+
+                    document.getElementById("upload").style.display = "block";
+                }
+
+
+            </script>
+
+            <h6 class="text-align-center"><?= $name . ' ' . $last_name ?></h6>
         </div>
         <div>
             <button class="btn btn-outline-danger w-100" type="button" data-bs-toggle="modal"
@@ -57,7 +181,7 @@ if (isset($_GET["response"])) {
                 déconnecter</a>
         </div>
     </div>
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" id="information" enctype="multipart/form-data">
         <h3>Information personnels</h3>
         <div>
             <label for="email" class="">Email</label>
