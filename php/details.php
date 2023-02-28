@@ -356,7 +356,7 @@ if (isset($_SESSION["sign"])) {
                                 </div>
 
                                 <div class='rightRound' id='uploads'>
-                                    <input type='file' name='pictures' id='pictures' accept='.jpg, .jpeg, .png'>                                    <i class='fa-regular fa-pen-to-square'></i>
+                                    <input type='file' name='".$secondaire_pic[$i]['id']."' id='pictures".($i +1)."' accept='.jpg, .jpeg, .png'>                                    <i class='fa-regular fa-pen-to-square'></i>
                                     <i class='fa-regular fa-pen-to-square'></i> 
                                 </div>
 
