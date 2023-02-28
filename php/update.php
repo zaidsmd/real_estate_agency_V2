@@ -2,9 +2,8 @@
 session_start();
 include_once "dbconfig.php";
 $id = $_GET['id'];
+$user_id = $_SESSION["id"];
 if (isset($_POST['update'])) {
-
-
   $title = $_POST['title'];
   $price = $_POST['price'];
   $area = $_POST['area'];
@@ -14,77 +13,29 @@ if (isset($_POST['update'])) {
   $category = $_POST['category'];
   $type = $_POST['type'];
   $description = $_POST['description'];
-
-  var_dump($description);
-  $directory = "../imgUpdate/";
-
-
-  $pic_name = basename($_FILES["primary"]["name"]);
-  $path = $directory.$pic_name;
-  move_uploaded_file($_FILES["primary"]["tmp_name"], $path);
-
-  $sqlSat = $conn->prepare("UPDATE pictures SET `path` = ? WHERE announcement_id = '$id' AND `primary` = 1");
-  $sqlSat->execute([$path]);
-
-  $sqlStat = $conn->prepare("UPDATE announcements SET title = ? , 
-    price = ? , area = ? ,
-    adresse = ? , country = ? ,
-    city = ? , category = ? ,
-    type = ? ,
-    description = ?  WHERE id = ?");
-  $sqlStat->execute([$title, $price, $area, $adresse, $country, $city, $category , $type , $description , $id]);
-
-  //pictures
-
-  //$pictures = basename($_FILES["pictures"]["name"]);
-  //$pic_pictures = $directory.$pictures;
-  //$sqlSat_pic = $conn->prepare("UPDATE pictures SET `path` = ? WHERE announcement_id = '$id' AND `primary` = 0");
-  //$sqlSat_pic->execute([$pic_pictures]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // move_uploaded_file($_FILES["primary"]["tmp_name"], $path);
-
-  //   $sqlSat = $conn->prepare("UPDATE pictures SET `path` = ? WHERE announcement_id = '$id' AND `primary` = 1");
-  //   $sqlSat->execute([$path]);
-
-  // $secondaire_pic = $conn->prepare("UPDATE pictures SET `path` = ? WHERE announcement_id = '$id' AND `primary` = 0")->fetchAll(PDO::FETCH_ASSOC);
-  // $secondaire_pic->execute([$pic]);
-
+$array = array_keys($_FILES);
+if (count($array)>0){
+  foreach ($array as $pic){
+    if ($_FILES["$pic"]["name"] != '' ){
+      $name= basename($_FILES["$pic"]["name"]);
+      $directory = "../files/".$_SESSION["id"]."/";
+      $path = $directory.$name;
+      move_uploaded_file($_FILES["$pic"]["tmp_name"], $path);
+      $sqlSat = $conn->prepare("UPDATE pictures SET `path` = '$path' WHERE id = '$pic'");
+      $sqlSat->execute();
+    }
+  }
+}
+  $sqlStat = $conn->prepare("UPDATE announcements SET title = '$title' ,
+    price = '$price' , area = '$area' ,
+    adresse = '$adresse' , country = '$country' ,
+    city = '$city' , category = '$category' ,
+    type =  '$type' ,
+    description = '$description'  WHERE id = '$id'");
+$sqlStat->execute();
 }
 
-
- header("Location:http://localhost/rael_v2-20230228T081608Z-001/rael_v2/real_estate_agency_V2/php/details.php?id=$id");
+ header("Location: details.php?id=$id");
  exit();
-?>
 
 
